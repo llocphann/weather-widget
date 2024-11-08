@@ -23,7 +23,7 @@ module.exports = class WeatherPlugin extends Plugin {
       units: 'metric',
       fontSize: '1em',
       fontColor: '#fff',
-      backgroundColor: '#0A1519',
+      backgroundColor: '#0A1519z',
       temperatureColor: '#fff',
       feelsLikeColor: '#fff',
       minMaxColor: '#fff',
@@ -217,7 +217,16 @@ class WeatherSettingTab extends PluginSettingTab {
 
     addBiggerSpace();  
     containerEl.createEl('h4', { text: 'Color Settings' });
-  
+    
+    new Setting(containerEl)
+      .setName('Status Color')
+      .addText(text => text
+        .setValue(this.plugin.settings.fontColor)
+        .onChange(async (value) => {
+          this.plugin.settings.fontColor = value;
+          await this.plugin.saveSettings();
+        }));
+
     new Setting(containerEl)
       .setName('Feels Like Color')
       .addText(text => text
