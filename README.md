@@ -55,4 +55,12 @@ Here’s how the weather widget would look when inserted into a note:
 city: London
 units: metric
 apiKey: your-api-key-here
+```
 
+**Contributing**
+
+Feel free to contribute.
+
+You can ![create an issue](https://github.com/llocphann/Weather-widget/issues) to report a bug, suggest an improvement for this plugin, ask a question, etc.
+
+You can make ![a pull request](https://github.com/llocphann/Weather-widget/pulls) to contribute to this plugin development.
