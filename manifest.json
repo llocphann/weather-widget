@@ -6,7 +6,7 @@
     "description": "A plugin to display weather information with OpenWeather API",
     "js": "main.js",
     "author": "llocphann",
-    "repo": "https://github.com/llocphann/Weather-widget",
+    "repo": "llocphann/weather-widget",
     "authorUrl": "https://github.com/llocphann",
     "fundingUrl": "https://buymeacoffee.com/llocphann",
     "isDesktopOnly": false
