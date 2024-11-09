@@ -22,29 +22,17 @@ module.exports = class WeatherPlugin extends Plugin {
         apiKey: "",
         city: "None",
         units: "metric",
-        fontSize: "1em",
+        fontSize: "18px",
         fontColor: "#fff",
         backgroundColor: "#0A1519z",
         temperatureColor: "#fff",
         feelsLikeColor: "#fff",
-        minMaxColor: "#fff",
-        humidityColor: "#fff",
-        windColor: "#fff",
-        sunriseSunsetColor: "#fff",
         showTemperature: true,
         showFeelsLike: true,
-        showMinMax: true,
-        showHumidity: true,
-        showWind: true,
-        showSunriseSunset: true,
         iconCloud: "Left",
         temperaturePosition: "",
         temperatureFlexDirection: "column",
         feelsLikePosition: "center",
-        minMaxPosition: "center",
-        humidityPosition: "center",
-        windPosition: "center",
-        sunriseSunsetPosition: "center",
         fontFamily: "Arial",
       },
       await this.loadData()
@@ -84,13 +72,7 @@ apiKey: ${this.settings.apiKey}
 
       const temperature = Math.round(main.temp);
       const feelsLike = Math.round(main.feels_like);
-      const tempMin = Math.round(main.temp_min);
-      const tempMax = Math.round(main.temp_max);
-      const humidity = main.humidity;
-      const windSpeed = Math.round(wind.speed);
       const description = weather[0].description.charAt(0).toUpperCase() + weather[0].description.slice(1);
-      const sunrise = new Date(sys.sunrise * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-      const sunset = new Date(sys.sunset * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
       const iconCode = weather[0].icon;
       const weatherIcon = `https://openweathermap.org/img/wn/${iconCode}.png`;
@@ -121,35 +103,13 @@ apiKey: ${this.settings.apiKey}
         this.settings.feelsLikePosition
       };">Feels like: ${feelsLike}°</p>
           </div>
-          <img src="${weatherIcon}" alt="${description}" style="width: 80px; height: 80px; display: ${
+          <img src="${weatherIcon}" alt="${description}" style="width: 280px; height: 280px; display: ${
         this.settings.iconCloud === "Right" ? "" : "none"
       }"/>
         </h2>
         <div style="margin-top: 15px; font-size: 0.95em; color: ${
           this.settings.fontColor
         }; display: grid; gap: 10px; grid-template-columns: 1fr 1fr; padding: 0 15px; font-weight: 400;">
-          ${
-            this.settings.showMinMax
-              ? `<p style="margin: 0; font-size: 0.95em; color: ${this.settings.minMaxColor}; text-align: ${this.settings.minMaxPosition}">🌡️ Min: ${tempMin}° | Max: ${tempMax}°</p>`
-              : ""
-          }
-          ${
-            this.settings.showHumidity
-              ? `<p style="margin: 0; font-size: 0.95em; color: ${this.settings.humidityColor}; text-align: ${this.settings.humidityPosition}">💧 Humidity: ${humidity}%</p>`
-              : ""
-          }
-          ${
-            this.settings.showWind
-              ? `<p style="margin: 0; font-size: 0.95em; color: ${this.settings.windColor}; text-align: ${
-                  this.settings.windPosition
-                }">💨 Wind: ${windSpeed} ${this.settings.units === "metric" ? "m/s" : "mph"}</p>`
-              : ""
-          }
-          ${
-            this.settings.showSunriseSunset
-              ? `<p style="margin: 0; font-size: 0.95em; color: ${this.settings.sunriseSunsetColor}; text-align: ${this.settings.sunriseSunsetPosition}">🌅 Sunrise: ${sunrise} | 🌇 Sunset: ${sunset}</p>`
-              : ""
-          }
         </div>
       </div>
     `;
@@ -226,7 +186,7 @@ class WeatherSettingTab extends PluginSettingTab {
 
     addBiggerSpace();
     containerEl.createEl("h3", { text: "Display Settings" });
-    ["showTemperature", "showFeelsLike", "showMinMax", "showHumidity", "showWind", "showSunriseSunset"].forEach((key) => {
+    ["showTemperature", "showFeelsLike"].forEach((key) => {
       new Setting(containerEl).setName(key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1")).addToggle((toggle) =>
         toggle.setValue(this.plugin.settings[key]).onChange(async (value) => {
           this.plugin.settings[key] = value;
@@ -272,34 +232,6 @@ class WeatherSettingTab extends PluginSettingTab {
       })
     );
 
-    new Setting(containerEl).setName("Humidity Color").addText((text) =>
-      text.setValue(this.plugin.settings.humidityColor).onChange(async (value) => {
-        this.plugin.settings.humidityColor = value;
-        await this.plugin.saveSettings();
-      })
-    );
-
-    new Setting(containerEl).setName("Wind Color").addText((text) =>
-      text.setValue(this.plugin.settings.windColor).onChange(async (value) => {
-        this.plugin.settings.windColor = value;
-        await this.plugin.saveSettings();
-      })
-    );
-
-    new Setting(containerEl).setName("Sunrise Sunset Color").addText((text) =>
-      text.setValue(this.plugin.settings.sunriseSunsetColor).onChange(async (value) => {
-        this.plugin.settings.sunriseSunsetColor = value;
-        await this.plugin.saveSettings();
-      })
-    );
-
-    new Setting(containerEl).setName("Min/Max Color").addText((text) =>
-      text.setValue(this.plugin.settings.minMaxColor).onChange(async (value) => {
-        this.plugin.settings.minMaxColor = value;
-        await this.plugin.saveSettings();
-      })
-    );
-
     new Setting(containerEl).setName("Background Color").addText((text) =>
       text.setValue(this.plugin.settings.backgroundColor).onChange(async (value) => {
         this.plugin.settings.backgroundColor = value;
@@ -333,54 +265,6 @@ class WeatherSettingTab extends PluginSettingTab {
             this.plugin.settings.showSunriseSunse = false;
             this.plugin.settings.iconCloud = value !== "start" ? "Right" : "Left";
           }
-          await this.plugin.saveSettings();
-        })
-    );
-
-    new Setting(containerEl).setName("Min/Max Position").addDropdown((dropdown) =>
-      dropdown
-        .addOption("left", "Left")
-        .addOption("center", "Center")
-        .addOption("right", "Right")
-        .setValue(this.plugin.settings.minMaxPosition)
-        .onChange(async (value) => {
-          this.plugin.settings.minMaxPosition = value;
-          await this.plugin.saveSettings();
-        })
-    );
-
-    new Setting(containerEl).setName("Wind Position").addDropdown((dropdown) =>
-      dropdown
-        .addOption("left", "Left")
-        .addOption("center", "Center")
-        .addOption("right", "Right")
-        .setValue(this.plugin.settings.windPosition)
-        .onChange(async (value) => {
-          this.plugin.settings.windPosition = value;
-          await this.plugin.saveSettings();
-        })
-    );
-
-    new Setting(containerEl).setName("Humidity Position").addDropdown((dropdown) =>
-      dropdown
-        .addOption("left", "Left")
-        .addOption("center", "Center")
-        .addOption("right", "Right")
-        .setValue(this.plugin.settings.humidityPosition)
-        .onChange(async (value) => {
-          this.plugin.settings.humidityPosition = value;
-          await this.plugin.saveSettings();
-        })
-    );
-
-    new Setting(containerEl).setName("Sunrise/Sunset Position").addDropdown((dropdown) =>
-      dropdown
-        .addOption("left", "Left")
-        .addOption("center", "Center")
-        .addOption("right", "Right")
-        .setValue(this.plugin.settings.sunriseSunsetPosition)
-        .onChange(async (value) => {
-          this.plugin.settings.sunriseSunsetPosition = value;
           await this.plugin.saveSettings();
         })
     );
