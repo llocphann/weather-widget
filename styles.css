@@ -18,7 +18,10 @@ h1 {
     left: 30%;
 }
 
-/* Clear Sky - Hot */
+/*############ MORNING = m ################ */
+/*############ EVENING = e ################ */
+
+/* Clear Sky - Sun */
 .hot {
     position: absolute;
     top: 25%;
@@ -29,10 +32,10 @@ h1 {
 
 .sun {
     position: absolute;
-    top: -30%;
-    left: 60%;
-    width: 200px;
-    height: 200px;
+    top: -25%;
+    left: 65%;
+    width: 170px;
+    height: 170px;
     border-radius: 100%;
     background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
     box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
@@ -50,8 +53,42 @@ h1 {
     opacity: 0.2;
 }
 
+/* Moon */
+.moon
+{
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:150px;
+	height: 150px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
+
+.spot1
+{
+	position: absolute;
+	top:-10%;
+	left:85%;
+	width:10px;
+	height: 10px;
+	border-radius: 100%;
+	background-color: #777;
+}
+.spot2
+{
+	position: absolute;
+	top:10%;
+	left:75%;
+	width:5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color: #777;
+}
+
 /* Cloudy */
-.bcloudy {
+.mbcloudy {
     position: absolute;
     top: 25%;
     left: 45%;
@@ -59,7 +96,7 @@ h1 {
     box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
 }
 
-.scloudy {
+.mscloudy {
     position: absolute;
     top: 25%;
     left: 45%;
@@ -67,7 +104,7 @@ h1 {
     box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
 }
 
-.fcloudy {
+.mfcloudy {
     position: absolute;
     top: 25%;
     left: 45%;
@@ -97,6 +134,66 @@ h1 {
 .suncx {
     background-color: #fff;
     opacity: 0.1;
+}
+
+/* Mist */
+.mmist {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    background: linear-gradient(to top right, #B3D9FF 20%, #A4C9E4 100%);
+    box-shadow: 1px 1px 30px rgba(176, 196, 222, 0.8), 0px 0px 50px rgba(162, 201, 228, 0.6);
+}
+
+.emist {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
+    box-shadow: 1px 1px 30px rgba(63, 81, 181, 0.8), 0px 0px 50px rgba(171, 71, 188, 0.6);
+}
+
+/* Mist Clouds */
+.mcloudtl, .mcloudbl, .mcloudtr, .mcloudbr {
+    position: absolute;
+    border-radius: 15px;
+    background-color: rgba(204, 233, 255, 0.7);
+    animation: move 3s infinite linear;
+}
+
+.mcloudtl {
+    top: -2%;
+    left: 55%;
+    width: 90px;
+    height: 25px;
+    box-shadow: 
+    4px 4px 60px rgba(169, 169, 169, 0.9),
+    -4px -4px 80px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
+}
+
+.mcloudtr {
+    top: 5%;
+    left: 85%;
+    width: 130px;
+    height: 25px;
+    box-shadow: 
+    4px 4px 60px rgba(169, 169, 169, 0.9),
+    -4px -4px 80px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
+
+}
+
+.mcloudbr {
+    top: 20%;
+    left: 75%;
+    width: 120px;
+    height: 23px;
+    box-shadow: 
+    4px 4px 60px rgba(169, 169, 169, 0.9),
+    -4px -4px 80px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
+
 }
 
 /* Cloud Elements */
@@ -153,7 +250,7 @@ h1 {
 }
 
 /* Stormy */
-.stormy {
+.msnowy {
 	position: absolute;
 	top:25%;
 	left:70%;
@@ -161,7 +258,7 @@ h1 {
 	rgba(33,33,33 ,1) 90%);
 	box-shadow: 1px 1px 30px rgba(33,33,33 ,1);
 }
-.stormy li {
+.msnowy li {
 	position: absolute;
 	list-style: none;
 	width: 5px;
@@ -173,38 +270,38 @@ h1 {
     opacity:0;
 }
 
-.stormy li:nth-child(1) {
+.msnowy li:nth-child(1) {
 top:0%;
 left:100%;
 }
 
-.stormy li:nth-child(2) {
+.msnowy li:nth-child(2) {
     top:5%;
     left:90%;
 }
 
-.stormy li:nth-child(3)
+.msnowy li:nth-child(3)
 {
     top:-10%;
     left:80%;
     animation-delay: 2s;
 }
 
-.stormy li:nth-child(4)
+.msnowy li:nth-child(4)
 {
     top:10%;
     left:100%;
     animation-delay: 2s;
 }
 
-.stormy li:nth-child(5)
+.msnowy li:nth-child(5)
 {
     top:20%;
     left:80%;
     animation-delay: 0.5s;
 }
 
-.stormy li:nth-child(6)
+.msnowy li:nth-child(6)
 {
     top:35%;
     left:70%;
@@ -213,7 +310,7 @@ left:100%;
 }
 
 
-.stormy li:nth-child(7)
+.msnowy li:nth-child(7)
 {
     top:23%;
     left:60%;
@@ -221,7 +318,7 @@ left:100%;
     animation-delay: 0.8s;
 }
 
-.stormy li:nth-child(8)
+.msnowy li:nth-child(8)
 {
     top:5%;
     left:70%;
@@ -262,6 +359,7 @@ position: absolute;
 	background-color: #333;
 z-index: -10;
 }
+
 .stick2
 {
 	position: absolute;
@@ -271,9 +369,10 @@ z-index: -10;
 	height: 15px;	
 	transform: rotate(45deg);
 	background-color: #333;
-z-index: -10;
+    z-index: -10;
 }
-.srain, .rainy, .rainz
+
+.msrain, .mrainy, .mrainz
 {
 	position: absolute;
 	top:60%;
@@ -348,7 +447,7 @@ z-index: -10;
     animation: flash 1.5s infinite linear;
 }
 
-.srain li, .rainy li, .rainz li {
+.msrain li, .mrainy li, .mrainz li {
     position: absolute;
     list-style: none;
     width: 2px;
@@ -360,63 +459,63 @@ z-index: -10;
     transform: rotate(25deg);
 }
 
-.srain li:nth-child(1) {
+.msrain li:nth-child(1), .mrainy li:nth-child(1), .mrainz li:nth-child(1) {
     top: 20%;
     left: 95%;
 }
 
-.srain li:nth-child(2), .rainy li:nth-child(2), .rainz li:nth-child(2) {
+.msrain li:nth-child(2), .mrainy li:nth-child(2), .mrainz li:nth-child(2) {
     top: 15%;
     left: 83%;
     animation-delay: 0.3s;
 }
 
-.srain li:nth-child(3), .rainy li:nth-child(3), .rainz li:nth-child(3) {
+.msrain li:nth-child(3), .mrainy li:nth-child(3), .mrainz li:nth-child(3) {
     top: 14%;
     left: 87%;
     animation-delay: 0.6s;
 }
 
-.srain li:nth-child(4), .rainy li:nth-child(4), .rainz li:nth-child(4) {
+.msrain li:nth-child(4), .mrainy li:nth-child(4), .mrainz li:nth-child(4) {
     top: 25%;
     left: 70%;
     animation-delay: 1s;
 }
 
-.srain li:nth-child(5), .rainy li:nth-child(5), .rainz li:nth-child(5) {
+.msrain li:nth-child(5), .mrainy li:nth-child(5), .mrainz li:nth-child(5) {
     top: 20%;
     left: 75%;
 }
 
-.srain li:nth-child(6), .rainy li:nth-child(6), .rainz li:nth-child(6) {
+.msrain li:nth-child(6), .mrainy li:nth-child(6), .mrainz li:nth-child(6) {
     top: 20%;
     left: 75%;
 }
 
-.srain li:nth-child(7), .rainy li:nth-child(7), .rainz li:nth-child(7) {
+.msrain li:nth-child(7), .mrainy li:nth-child(7), .mrainz li:nth-child(7) {
     top: 15%;
     left: 63%;
     animation-delay: 0.3s;
 }
 
-.srain li:nth-child(8), .rainy li:nth-child(8), .rainz li:nth-child(8) {
+.msrain li:nth-child(8), .mrainy li:nth-child(8), .mrainz li:nth-child(8) {
     top: 14%;
     left: 67%;
     animation-delay: 0.6s;
 }
 
-.srain li:nth-child(9), .rainy li:nth-child(9), .rainz li:nth-child(9) {
+.msrain li:nth-child(9), .mrainy li:nth-child(9), .mrainz li:nth-child(9) {
     top: 25%;
     left: 50%;
     animation-delay: 1s;
 }
 
-.srain li:nth-child(10), .rainy li:nth-child(10), .rainz li:nth-child(10) {
+.msrain li:nth-child(10), .mrainy li:nth-child(10), .mrainz li:nth-child(10) {
     top: 20%;
     left: 55%;
 }
 
-
+/*############ EVENING ################ */
 .night
 {
 	position: absolute;
@@ -427,37 +526,7 @@ z-index: -10;
 	box-shadow: 1px 1px 30px rgba(81,45,168 ,1);
 
 }
-.moon
-{
-	position: absolute;
-	top:-10%;
-	left:65%;
-	width:70px;
-	height: 70px;
-	border-radius: 100%;
-	background:rgba(255,241,118 ,1);
-	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
-}
-.spot1
-{
-	position: absolute;
-	top:0%;
-	left:85%;
-	width:10px;
-	height: 10px;
-	border-radius: 100%;
-	background-color: #777;
-}
-.spot2
-{
-	position: absolute;
-	top:30%;
-	left:75%;
-	width:5px;
-	height: 5px;
-	border-radius: 100%;
-	background-color: #777;
-}
+
 
 .night li
 {
