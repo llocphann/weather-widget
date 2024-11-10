@@ -22,13 +22,23 @@ h1 {
 /*############ EVENING = e ################ */
 
 /* Clear Sky - Sun */
-.hot {
+.day {
     position: absolute;
     top: 25%;
     left: 20%;
     background: linear-gradient(to top right, #FF5722 0%, #FB8C00 100%);
     box-shadow: 1px 1px 30px rgba(255, 111, 0, 1);
 }
+
+.night {
+	position: absolute;
+	top: 60%;
+	left: 60%;
+	background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
+	box-shadow: 1px 1px 30px rgba(81, 45, 168, 1);
+}
+
+/* Sun for clear sky */
 
 .sun {
     position: absolute;
@@ -51,6 +61,30 @@ h1 {
     border-radius: 100%;
     background-color: #fff;
     opacity: 0.2;
+}
+
+/* Sun for cloudy variations */
+
+.sunc {
+    position: absolute;
+    top: -20%;
+    left: 65%;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
+    box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
+}
+
+.suncx {
+    position: absolute;
+    top: -20%;
+    left: 65%;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    background-color: #fff;
+    opacity: 0.1;
 }
 
 /* Moon */
@@ -87,7 +121,12 @@ h1 {
 	background-color: #777;
 }
 
-/* Cloudy */
+/* Cloudy Variations 
+mbcloudy = morning broken clouds
+mscloudy = morning scattered clouds
+mfcloudy = morning few clouds
+*/
+
 .mbcloudy {
     position: absolute;
     top: 25%;
@@ -117,26 +156,11 @@ h1 {
         inset 0px 0px 25px rgba(255, 255, 224, 0.4);
 }
 
-.sunc, .suncx {
-    position: absolute;
-    top: -20%;
-    left: 65%;
-    width: 130px;
-    height: 130px;
-    border-radius: 100%;
-}
+/* Mist 
+mmist = morning mist
+emist = evening mist
+*/
 
-.sunc {
-    background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
-    box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
-}
-
-.suncx {
-    background-color: #fff;
-    opacity: 0.1;
-}
-
-/* Mist */
 .mmist {
     position: absolute;
     top: 25%;
@@ -153,7 +177,12 @@ h1 {
     box-shadow: 1px 1px 30px rgba(63, 81, 181, 0.8), 0px 0px 50px rgba(171, 71, 188, 0.6);
 }
 
-/* Mist Clouds */
+/* Mist Clouds 
+mcloudtl = misty cloud top left
+mcloudbl = misty cloud bot left
+mcloudtr = misty cloud top right
+mcloudbr = misty cloud bot right */
+
 .mcloudtl, .mcloudbl, .mcloudtr, .mcloudbr {
     position: absolute;
     border-radius: 15px;
@@ -164,6 +193,18 @@ h1 {
 .mcloudtl {
     top: -2%;
     left: 55%;
+    width: 90px;
+    height: 25px;
+    box-shadow: 
+    4px 4px 60px rgba(169, 169, 169, 0.9),
+    -4px -4px 80px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
+    z-index: 1;
+}
+
+.mcloudbl {
+    top: -22%;
+    left: 25%;
     width: 90px;
     height: 25px;
     box-shadow: 
@@ -197,192 +238,89 @@ h1 {
 }
 
 /* Cloud Elements */
-.cloud, .cloudx, .cloudz {
+
+.cloud {
     position: absolute;
+    top: 5%;
+    left: 70%;
+    width: 130px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    box-shadow: 1px 1px 30px rgba(0, 151, 167, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.cloudx {
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    width: 120px;
+    height: 23px;
     border-radius: 15px;
     background-color: rgba(129, 212, 250, 1);
     animation: move 3s infinite linear;
+    z-index: 1;
 }
 
-.scloud, .scloudx {
+.cloudz {
+    position: absolute;
+    top: 8%;
+    left: 35%;
+    width: 80px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+/* Sun with Cloud 
+scloud = suncloud
+scloudx = suncloud 2
+*/
+
+.scloud {
+    position: absolute;
+    top: 10%;
+    left: 78%;
+    width: 120px;
+    height: 23px;
     border-radius: 15px;
     background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
     box-shadow: 
         -5px -5px 20px rgba(255, 223, 186, 0.8),
         10px 10px 15px rgba(129, 212, 250, 0.5); 
     animation: move 3s infinite linear;
-}
-
-.cloud {
-    top: 5%;
-    left: 70%;
-    width: 130px;
-    height: 25px;
-    box-shadow: 1px 1px 30px rgba(0, 151, 167, 1);
-    z-index: 1;
-}
-
-.cloudx {
-    top: 20%;
-    left: 55%;
-    width: 120px;
-    height: 23px;
-    z-index: 1;
-
-}
-
-.cloudz {
-    top: 8%;
-    left: 35%;
-    width: 80px;
-    height: 20px;
-    z-index: 1;
-}
-
-.scloud {
-    top: 10%;
-    left: 78%;
-    width: 120px;
-    height: 23px;
     z-index: 1;
 }
 
 .scloudx {
+    position: absolute;
     top: 20%;
     left: 55%;
     width: 120px;
     height: 23px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
+    box-shadow: 
+        -5px -5px 20px rgba(255, 223, 186, 0.8),
+        10px 10px 15px rgba(129, 212, 250, 0.5); 
+    animation: move 3s infinite linear;
     z-index: 1;
-
 }
 
-/* Stormy */
-.msnowy {
-	position: absolute;
-	top:25%;
-	left:70%;
-	background:linear-gradient( to top right,rgba(117,117,117 ,1) 0%,
-	rgba(33,33,33 ,1) 90%);
-	box-shadow: 1px 1px 30px rgba(33,33,33 ,1);
-}
+/* Rainy Variations
+msrain = morning shower rain
+mrainy = morning rainy
+mrainz = morning thunderstorm 
+cloudr = cloudrain
+cloudrx = cloudrain 2
+cloudrt = cloudrain thunderstorm
+cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 
-.msnowy li {
-	position: absolute;
-	list-style: none;
-	width: 5px;
-	height: 5px;
-	border-radius: 100%;
-	background-color:#777;
-	box-shadow: 1px 1px 30px #555;
-	animation: fall 3s infinite linear ;
-    opacity:0;
-}
-
-.msnowy li:nth-child(1) {
-top:0%;
-left:100%;
-}
-
-.msnowy li:nth-child(2) {
-    top:5%;
-    left:90%;
-}
-
-.msnowy li:nth-child(3)
-{
-    top:-10%;
-    left:80%;
-    animation-delay: 2s;
-}
-
-.msnowy li:nth-child(4)
-{
-    top:10%;
-    left:100%;
-    animation-delay: 2s;
-}
-
-.msnowy li:nth-child(5)
-{
-    top:20%;
-    left:80%;
-    animation-delay: 0.5s;
-}
-
-.msnowy li:nth-child(6)
-{
-    top:35%;
-    left:70%;
-    background-color: #bbb;
-    animation-delay: 0.5s;
-}
-
-
-.msnowy li:nth-child(7)
-{
-    top:23%;
-    left:60%;
-    background-color: #bbb;
-    animation-delay: 0.8s;
-}
-
-.msnowy li:nth-child(8)
-{
-    top:5%;
-    left:70%;
-    background-color: #bbb;
-    animation-delay: 0.8s;
-}
-
-.snowe
-{
-position: absolute;
-	top:60%;
-	left:40%;
-	width:40px;
-	height: 40px;
-	border-radius:60px;
-	background-color: #ddd;
-}
-
-.snowex
-{
-	position: absolute;
-	top:50%;
-	left:50%;
-	width:15px;
-	height: 15px;	
-	border-radius:15px;
-	background-color: #bbb;
-
-}
-
-.stick
-{
-	position: absolute;
-	top:60%;
-	left:40%;
-	width:3px;
-	height: 15px;	
-	transform: rotate(-45deg);
-	background-color: #333;
-z-index: -10;
-}
-
-.stick2
-{
-	position: absolute;
-	top:60%;
-	left:70%;
-	width:3px;
-	height: 15px;	
-	transform: rotate(45deg);
-	background-color: #333;
-    z-index: -10;
-}
-
-.msrain, .mrainy, .mrainz
-{
+.msrain, .mrainy, .mrainz {
 	position: absolute;
 	top:60%;
 	left:30%;
@@ -519,14 +457,143 @@ z-index: -10;
     left: 55%;
 }
 
-/*############ EVENING ################ */
-.night {
-	position: absolute;
-	top: 60%;
-	left: 60%;
-	background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
-	box-shadow: 1px 1px 30px rgba(81, 45, 168, 1);
+/* Snowy */
+
+.msnowy {
+    position: absolute;
+    top: 25%;
+    left: 70%;
+    background: linear-gradient( to top right,rgba(33,33,33 ,0.9) 30%, rgba(117,117,117 ,1) 95%);
+    box-shadow: 1px 1px 30px rgba(117,117,117 ,1);
 }
+
+
+.esnowy {
+	position: absolute;
+	top:25%;
+	left:70%;
+	background:linear-gradient( to top right,rgba(117,117,117 ,1) 0%,
+	rgba(33,33,33 ,1) 90%);
+	box-shadow: 1px 1px 30px rgba(33,33,33 ,1);
+}
+
+.esnowy li, .msnowy li {
+	position: absolute;
+	list-style: none;
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color:#777;
+	box-shadow: 1px 1px 30px #555;
+	animation: fall 3s infinite linear ;
+    opacity:0;
+}
+
+.esnowy li:nth-child(1), .msnowy li:nth-child(1) {
+top:0%;
+left:100%;
+}
+
+.esnowy li:nth-child(2), .msnowy li:nth-child(2) {
+    top:5%;
+    left:90%;
+}
+
+.esnowy li:nth-child(3), .msnowy li:nth-child(3)
+{
+    top:-10%;
+    left:80%;
+    animation-delay: 2s;
+}
+
+.esnowy li:nth-child(4), .msnowy li:nth-child(4)
+{
+    top:10%;
+    left:100%;
+    animation-delay: 2s;
+}
+
+.esnowy li:nth-child(5), .msnowy li:nth-child(5)
+{
+    top:20%;
+    left:80%;
+    animation-delay: 0.5s;
+}
+
+.esnowy li:nth-child(6), .msnowy li:nth-child(6)
+{
+    top:35%;
+    left:70%;
+    background-color: #bbb;
+    animation-delay: 0.5s;
+}
+
+
+.esnowy li:nth-child(7), .msnowy li:nth-child(7)
+{
+    top:23%;
+    left:60%;
+    background-color: #bbb;
+    animation-delay: 0.8s;
+}
+
+.esnowy li:nth-child(8), .msnowy li:nth-child(8)
+{
+    top:5%;
+    left:70%;
+    background-color: #bbb;
+    animation-delay: 0.8s;
+}
+
+.snowe
+{
+  position: absolute;
+	bottom:-5%;
+	right:-5%;
+	width:80px;
+	height: 80px;
+	border-radius:60px;
+	background-color: #ddd;
+}
+
+.snowex
+{
+	position: absolute;
+	bottom: 14%;
+	right: 15%;
+	width:50px;
+	height: 50px;	
+	border-radius:100%;
+	background-color: #bbb;
+  z-index: 400;
+
+}
+
+.stick
+{
+	position: absolute;
+	bottom: 20%;
+	right: 6%;
+	width:7px;
+	height: 35px;	
+	transform: rotate(0deg);
+	background-color: #333;
+  z-index: -10;
+}
+
+.stick2
+{
+	position: absolute;
+	bottom: 2%;
+	right: 25%;
+	width: 7px;
+	height: 35px;	
+	transform: rotate(105deg);
+	background-color: #333;
+  z-index: -10;
+}
+
+/*############ EVENING ################ */
 
 .emist li, .night li {
 	position: absolute;
