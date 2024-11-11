@@ -24,16 +24,21 @@ h1 {
 /* Clear Sky - Sun */
 .day {
     position: absolute;
-    top: 25%;
-    left: 20%;
     background: linear-gradient(to top right, #FF5722 0%, #FB8C00 100%);
     box-shadow: 1px 1px 30px rgba(255, 111, 0, 1);
+    width: 300px;
+    height: 300px;
+    border-radius: 35px;
+    top: 10%;
 }
 
 .night {
 	position: absolute;
-	top: 60%;
-	left: 60%;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 25%;
+    border-radius: 35px;
 	background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
 	box-shadow: 1px 1px 30px rgba(81, 45, 168, 1);
 }
@@ -129,24 +134,33 @@ mfcloudy = morning few clouds
 
 .mbcloudy {
     position: absolute;
-    top: 25%;
-    left: 45%;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    border-radius: 35px;
+    left: 25%;
     background: linear-gradient(to top right, #3F51B5 0%, #039BE5 40%);
     box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
 }
 
 .mscloudy {
     position: absolute;
-    top: 25%;
-    left: 45%;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 50%;
+    border-radius: 35px;
     background: linear-gradient(to top right, #039BE5 20%, #FB8C00 100%);
     box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
 }
 
 .mfcloudy {
     position: absolute;
-    top: 25%;
-    left: 45%;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 75%;
+    border-radius: 35px;
     background: linear-gradient(to top right, #039BE5 5%, #FB8C00 85%);
     box-shadow: 
         -15px -15px 30px rgba(255, 255, 255, 0.8),
@@ -156,6 +170,43 @@ mfcloudy = morning few clouds
         inset 0px 0px 25px rgba(255, 255, 224, 0.4);
 }
 
+.ebcloudy {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 25%;
+    left: 40%;
+    border-radius: 35px;
+	background: linear-gradient(to top right, #4682B4 5%, #2C3E50 85%);
+	box-shadow: 1px 1px 30px rgba(70, 130, 180, 0.8);
+}
+
+.escloudy {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 25%;
+    left: 25%;
+    border-radius: 35px;
+	background: linear-gradient(to top right, #6A5ACD -60%, #2F4F4F 100%);
+	box-shadow: 1px 1px 30px rgba(70, 130, 180, 0.8);
+}
+
+.efcloudy {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 25%;
+    border-radius: 35px;
+	background: linear-gradient(to top right, #6A5ACD 20%, #2F4F4F 100%);;
+	box-shadow: 
+		-15px -15px 30px rgba(255, 255, 255, 0.4),
+		10px -10px 25px rgba(70, 130, 180, 0.3),
+		-5px 5px 20px rgba(25, 25, 112, 0.3),
+		10px 10px 15px rgba(0, 0, 139, 0.2),
+		inset 0px 0px 25px rgba(135, 206, 235, 0.4);
+}
+
 /* Mist 
 mmist = morning mist
 emist = evening mist
@@ -163,16 +214,21 @@ emist = evening mist
 
 .mmist {
     position: absolute;
-    top: 25%;
-    left: 45%;
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    border-radius: 35px;
     background: linear-gradient(to top right, #B3D9FF 20%, #A4C9E4 100%);
     box-shadow: 1px 1px 30px rgba(176, 196, 222, 0.8), 0px 0px 50px rgba(162, 201, 228, 0.6);
 }
 
 .emist {
     position: absolute;
-    top: 25%;
-    left: 45%;
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    left: 25%;
+    border-radius: 35px;
     background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
     box-shadow: 1px 1px 30px rgba(63, 81, 181, 0.8), 0px 0px 50px rgba(171, 71, 188, 0.6);
 }
@@ -320,13 +376,76 @@ cloudrx = cloudrain 2
 cloudrt = cloudrain thunderstorm
 cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 
-.msrain, .mrainy, .mrainz {
+.msrain {
 	position: absolute;
-	top:60%;
-	left:30%;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: ;
+    border-radius: 35px;
 	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
 	rgba(38,198,218 ,1) 50%);
 	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
+}
+
+.mrainy {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 25%;
+    border-radius: 35px;
+	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
+	rgba(38,198,218 ,1) 50%);
+	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
+}
+
+.mrainz {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 50%;
+    border-radius: 35px;
+	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
+	rgba(38,198,218 ,1) 50%);
+	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
+}
+
+/* .esrain Element */
+.esrain {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    left: %;
+    border-radius: 35px;
+	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
+	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
+}
+
+/* .erainy Element */
+.erainy {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    left: 25%;
+    border-radius: 35px;
+	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
+	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
+}
+
+/* .erainz Element */
+.erainz {
+	position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    left: 50%;
+    border-radius: 35px;
+	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
+	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
 }
 
 .cloudr {
@@ -339,6 +458,7 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: move 3s infinite linear;
+      z-index: 1;
 }
 
 .cloudrx {
@@ -351,6 +471,7 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: move 3s infinite linear;
+      z-index: 1;
 }
 
 .cloudrt {
@@ -363,6 +484,7 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: flash 1.5s infinite linear, move 3s infinite linear;
+      z-index: 1;
 }
 
 .cloudrtx {
@@ -375,6 +497,7 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: flash 1.5s infinite linear, move 3s infinite linear;
+      z-index: 1;
 }
 
 .cloudrty {
@@ -387,9 +510,24 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: flash 1.5s infinite linear, move 3s infinite linear;
+      z-index: 1;
 }
 
-.msrain li, .mrainy li, .mrainz li {
+.cloudrz {
+    position: absolute;
+    top: 15%;
+    left: 65%;
+    width: 100px;
+    height: 25px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+
+.erainz li, .erainy li, .esrain li, .msrain li, .mrainy li, .mrainz li {
     position: absolute;
     list-style: none;
     width: 2px;
@@ -401,58 +539,58 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
     transform: rotate(25deg);
 }
 
-.msrain li:nth-child(1), .mrainy li:nth-child(1), .mrainz li:nth-child(1) {
+.erainz li:nth-child(1), .erainy li:nth-child(1), .esrain li:nth-child(1), .msrain li:nth-child(1), .mrainy li:nth-child(1), .mrainz li:nth-child(1) {
     top: 20%;
     left: 95%;
 }
 
-.msrain li:nth-child(2), .mrainy li:nth-child(2), .mrainz li:nth-child(2) {
+.erainz li:nth-child(2), .erainy li:nth-child(2), .esrain li:nth-child(2), .msrain li:nth-child(2), .mrainy li:nth-child(2), .mrainz li:nth-child(2) {
     top: 15%;
     left: 83%;
     animation-delay: 0.3s;
 }
 
-.msrain li:nth-child(3), .mrainy li:nth-child(3), .mrainz li:nth-child(3) {
+.erainz li:nth-child(3), .erainy li:nth-child(3), .esrain li:nth-child(3), .msrain li:nth-child(3), .mrainy li:nth-child(3), .mrainz li:nth-child(3) {
     top: 14%;
     left: 87%;
     animation-delay: 0.6s;
 }
 
-.msrain li:nth-child(4), .mrainy li:nth-child(4), .mrainz li:nth-child(4) {
+.erainz li:nth-child(4), .erainy li:nth-child(4), .esrain li:nth-child(4), .msrain li:nth-child(4), .mrainy li:nth-child(4), .mrainz li:nth-child(4) {
     top: 25%;
     left: 70%;
     animation-delay: 1s;
 }
 
-.msrain li:nth-child(5), .mrainy li:nth-child(5), .mrainz li:nth-child(5) {
+.erainz li:nth-child(5), .erainy li:nth-child(5), .esrain li:nth-child(5), .msrain li:nth-child(5), .mrainy li:nth-child(5), .mrainz li:nth-child(5) {
     top: 20%;
     left: 75%;
 }
 
-.msrain li:nth-child(6), .mrainy li:nth-child(6), .mrainz li:nth-child(6) {
+.erainz li:nth-child(6), .erainy li:nth-child(6), .esrain li:nth-child(6), .msrain li:nth-child(6), .mrainy li:nth-child(6), .mrainz li:nth-child(6) {
     top: 20%;
     left: 75%;
 }
 
-.msrain li:nth-child(7), .mrainy li:nth-child(7), .mrainz li:nth-child(7) {
+.erainz li:nth-child(7), .erainy li:nth-child(7), .esrain li:nth-child(7), .msrain li:nth-child(7), .mrainy li:nth-child(7), .mrainz li:nth-child(7) {
     top: 15%;
     left: 63%;
     animation-delay: 0.3s;
 }
 
-.msrain li:nth-child(8), .mrainy li:nth-child(8), .mrainz li:nth-child(8) {
+.erainz li:nth-child(8), .erainy li:nth-child(8), .esrain li:nth-child(8), .msrain li:nth-child(8), .mrainy li:nth-child(8), .mrainz li:nth-child(8) {
     top: 14%;
     left: 67%;
     animation-delay: 0.6s;
 }
 
-.msrain li:nth-child(9), .mrainy li:nth-child(9), .mrainz li:nth-child(9) {
+.erainz li:nth-child(9), .erainy li:nth-child(9), .esrain li:nth-child(9), .msrain li:nth-child(9), .mrainy li:nth-child(9), .mrainz li:nth-child(9) {
     top: 25%;
     left: 50%;
     animation-delay: 1s;
 }
 
-.msrain li:nth-child(10), .mrainy li:nth-child(10), .mrainz li:nth-child(10) {
+.erainz li:nth-child(10), .erainy li:nth-child(10), .esrain li:nth-child(10), .msrain li:nth-child(10), .mrainy li:nth-child(10), .mrainz li:nth-child(10) {
     top: 20%;
     left: 55%;
 }
@@ -461,8 +599,11 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 
 .msnowy {
     position: absolute;
-    top: 25%;
-    left: 70%;
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    left: 75%;
+    border-radius: 35px;
     background: linear-gradient( to top right,rgba(33,33,33 ,0.9) 30%, rgba(117,117,117 ,1) 95%);
     box-shadow: 1px 1px 30px rgba(117,117,117 ,1);
 }
@@ -470,8 +611,11 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 
 .esnowy {
 	position: absolute;
-	top:25%;
-	left:70%;
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    left: 50%;
+    border-radius: 35px;
 	background:linear-gradient( to top right,rgba(117,117,117 ,1) 0%,
 	rgba(33,33,33 ,1) 90%);
 	box-shadow: 1px 1px 30px rgba(33,33,33 ,1);
