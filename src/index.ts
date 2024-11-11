@@ -2,7 +2,8 @@ import { ItemView, Plugin, WorkspaceLeaf } from "obsidian";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { DayComponent } from "./component/day/";
+// import { DayComponent } from "./component/day/";
+import DiceRoller from "./ui/DicerRoller.js";
 
 const VIEW_TYPE = "react-view";
 
@@ -22,7 +23,8 @@ class MyReactView extends ItemView {
   }
 
   async onOpen(): Promise<void> {
-    this.reactComponent = React.createElement(DayComponent);
+    // this.reactComponent = React.createElement(DayComponent);
+    this.reactComponent = React.createElement(DiceRoller);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ReactDOM.render(this.reactComponent, (this as any).contentEl);
