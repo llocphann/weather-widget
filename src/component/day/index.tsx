@@ -1,5 +1,5 @@
 import classes from "./style.module.scss";
-const day = () => {
+export const DayComponent = () => {
   return (
     <>
       <div className={classes.div}>
@@ -9,4 +9,3 @@ const day = () => {
     </>
   );
 };
-export default day;
