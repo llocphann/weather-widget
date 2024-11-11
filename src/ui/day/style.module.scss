@@ -1,17 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
-
 body {
   background: #fff;
 }
 
-div {
+.div {
   width: 300px;
   height: 300px;
   border-radius: 35px;
   z-index: 120;
 }
 
-h1 {
+.h1 {
   font-family: "Raleway", sans-serif;
   position: fixed;
   left: 30%;
