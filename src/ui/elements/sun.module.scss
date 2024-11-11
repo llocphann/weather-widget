@@ -1,0 +1,46 @@
+/* Sun for clear sky */
+.sun {
+  position: absolute;
+  top: -25%;
+  left: 65%;
+  width: 170px;
+  height: 170px;
+  border-radius: 100%;
+  background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
+  box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
+  animation: inex 3s infinite linear;
+}
+
+.sunx {
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #fff;
+  opacity: 0.2;
+}
+
+/* Sun for cloudy variations */
+.sunc {
+  position: absolute;
+  top: -20%;
+  left: 65%;
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
+  box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
+}
+
+.suncx {
+  position: absolute;
+  top: -20%;
+  left: 65%;
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+}

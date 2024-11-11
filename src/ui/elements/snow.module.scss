@@ -1,0 +1,168 @@
+/* ########### Snowman ############# */
+
+.snowe {
+  position: absolute;
+	bottom:-5%;
+	right:-5%;
+	width:80px;
+	height: 80px;
+	border-radius:60px;
+	background-color: #ddd;
+}
+
+.snowex {
+	position: absolute;
+	bottom: 14%;
+	right: 15%;
+	width:50px;
+	height: 50px;	
+	border-radius:100%;
+	background-color: #bbb;
+  z-index: 400;
+
+}
+
+.stick {
+	position: absolute;
+	bottom: 20%;
+	right: 6%;
+	width:7px;
+	height: 35px;	
+	transform: rotate(0deg);
+	background-color: #333;
+  z-index: -10;
+}
+
+.stick2 {
+	position: absolute;
+	bottom: 2%;
+	right: 25%;
+	width: 7px;
+	height: 35px;	
+	transform: rotate(105deg);
+	background-color: #333;
+  z-index: -10;
+}
+
+/* ########### Morning Snowy ############# */
+.msnowy li {
+	position: absolute;
+	list-style: none;
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color:#777;
+	box-shadow: 1px 1px 30px #555;
+	animation: fall 3s infinite linear ;
+    opacity:0;
+} 
+.msnowy li:nth-child(1) {
+  top:0%;
+  left:100%;
+}
+
+.msnowy li:nth-child(2) {
+  top:5%;
+  left:90%;
+}
+
+.msnowy li:nth-child(3) {
+    top:-10%;
+    left:80%;
+    animation-delay: 2s;
+}
+.msnowy li:nth-child(4) {
+    top:10%;
+    left:100%;
+    animation-delay: 2s;
+}
+
+.msnowy li:nth-child(5) {
+    top:20%;
+    left:80%;
+    animation-delay: 0.5s;
+}
+
+.msnowy li:nth-child(6) {
+    top:35%;
+    left:70%;
+    background-color: #bbb;
+    animation-delay: 0.5s;
+}
+
+.msnowy li:nth-child(7) {
+    top:23%;
+    left:60%;
+    background-color: #bbb;
+    animation-delay: 0.8s;
+}
+
+.msnowy li:nth-child(8) {
+    top:5%;
+    left:70%;
+    background-color: #bbb;
+    animation-delay: 0.8s;
+}
+
+/* ########### Evening Snowy ############# */
+.esnowy li {
+	position: absolute;
+	list-style: none;
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color:#777;
+	box-shadow: 1px 1px 30px #555;
+	animation: fall 3s infinite linear ;
+    opacity:0;
+}
+
+.esnowy li:nth-child(1) {
+top:0%;
+left:100%;
+}
+
+.esnowy li:nth-child(2) {
+    top:5%;
+    left:90%;
+}
+
+.esnowy li:nth-child(3) {
+    top:-10%;
+    left:80%;
+    animation-delay: 2s;
+}
+
+.esnowy li:nth-child(4) {
+    top:10%;
+    left:100%;
+    animation-delay: 2s;
+}
+
+.esnowy li:nth-child(5) {
+    top:20%;
+    left:80%;
+    animation-delay: 0.5s;
+}
+
+.esnowy li:nth-child(6) {
+    top:35%;
+    left:70%;
+    background-color: #bbb;
+    animation-delay: 0.5s;
+}
+
+
+.esnowy li:nth-child(7) {
+    top:23%;
+    left:60%;
+    background-color: #bbb;
+    animation-delay: 0.8s;
+}
+
+.esnowy li:nth-child(8) {
+    top:5%;
+    left:70%;
+    background-color: #bbb;
+    animation-delay: 0.8s;
+}

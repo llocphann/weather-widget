@@ -1,0 +1,69 @@
+/* ######### Raindrops Size ############# */
+.erainz li, .erainy li, .esrain li, .msrain li, .mrainy li, .mrainz li {
+  position: absolute;
+  list-style: none;
+  width: 2px;
+  height: 7px;
+  border-radius: 10%;
+  background-color: #eee;
+  opacity: 0;
+  animation: fall 3s infinite linear;
+  transform: rotate(25deg);
+}
+
+/* ######### Raindrops Position ########## */
+.erainz li:nth-child(1), .erainy li:nth-child(1), .esrain li:nth-child(1), .msrain li:nth-child(1), .mrainy li:nth-child(1), .mrainz li:nth-child(1) {
+  top: 20%;
+  left: 95%;
+}
+
+.erainz li:nth-child(2), .erainy li:nth-child(2), .esrain li:nth-child(2), .msrain li:nth-child(2), .mrainy li:nth-child(2), .mrainz li:nth-child(2) {
+  top: 15%;
+  left: 83%;
+  animation-delay: 0.3s;
+}
+
+.erainz li:nth-child(3), .erainy li:nth-child(3), .esrain li:nth-child(3), .msrain li:nth-child(3), .mrainy li:nth-child(3), .mrainz li:nth-child(3) {
+  top: 14%;
+  left: 87%;
+  animation-delay: 0.6s;
+}
+
+.erainz li:nth-child(4), .erainy li:nth-child(4), .esrain li:nth-child(4), .msrain li:nth-child(4), .mrainy li:nth-child(4), .mrainz li:nth-child(4) {
+  top: 25%;
+  left: 70%;
+  animation-delay: 1s;
+}
+
+.erainz li:nth-child(5), .erainy li:nth-child(5), .esrain li:nth-child(5), .msrain li:nth-child(5), .mrainy li:nth-child(5), .mrainz li:nth-child(5) {
+  top: 20%;
+  left: 75%;
+}
+
+.erainz li:nth-child(6), .erainy li:nth-child(6), .esrain li:nth-child(6), .msrain li:nth-child(6), .mrainy li:nth-child(6), .mrainz li:nth-child(6) {
+  top: 20%;
+  left: 75%;
+}
+
+.erainz li:nth-child(7), .erainy li:nth-child(7), .esrain li:nth-child(7), .msrain li:nth-child(7), .mrainy li:nth-child(7), .mrainz li:nth-child(7) {
+  top: 15%;
+  left: 63%;
+  animation-delay: 0.3s;
+}
+
+.erainz li:nth-child(8), .erainy li:nth-child(8), .esrain li:nth-child(8), .msrain li:nth-child(8), .mrainy li:nth-child(8), .mrainz li:nth-child(8) {
+  top: 14%;
+  left: 67%;
+  animation-delay: 0.6s;
+}
+
+.erainz li:nth-child(9), .erainy li:nth-child(9), .esrain li:nth-child(9), .msrain li:nth-child(9), .mrainy li:nth-child(9), .mrainz li:nth-child(9) {
+  top: 25%;
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.erainz li:nth-child(10), .erainy li:nth-child(10), .esrain li:nth-child(10), .msrain li:nth-child(10), .mrainy li:nth-child(10), .mrainz li:nth-child(10) {
+  top: 20%;
+  left: 55%;
+}

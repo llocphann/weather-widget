@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+body {
+  background: #fff;
+}
+
+div {
+  width: 300px;
+  height: 300px;
+  border-radius: 35px;
+  z-index: 120;
+}
+
+h1 {
+  font-family: "Raleway", sans-serif;
+  position: fixed;
+  left: 30%;
+}
+
+h2 {
+  font-family: "Raleway", sans-serif;
+  position: fixed;
+  left: 30%;
+}
+
+.mfcloudy {
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  background: linear-gradient(to top right, #039BE5 5%, #FB8C00 85%);
+  box-shadow: 
+      -15px -15px 30px rgba(255, 255, 255, 0.8),
+      10px -10px 25px rgba(255, 223, 186, 0.6),
+      -5px 5px 20px rgba(135, 206, 250, 0.5),
+      10px 10px 15px rgba(255, 140, 0, 0.4),   
+      inset 0px 0px 25px rgba(255, 255, 224, 0.4);
+}

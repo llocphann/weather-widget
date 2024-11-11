@@ -1,10 +1,11 @@
 import classes from "./style.module.scss";
+import sunStyles from "../elements/sun.module.scss";
 const day = () => {
   return (
     <>
       <div className={classes.div}>
-        <span className={classes.sun}></span>
-        <span className={classes.sunx}></span>
+        <span className={sunStyles.sun}></span>
+        <span className={sunStyles.sunx}></span>
       </div>
     </>
   );
