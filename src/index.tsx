@@ -42,6 +42,9 @@ export default class WeatherPlugin extends Plugin {
     const dataWeather = await getDataWeather(this.settings);
     this.registerView(VIEW_TYPE, (leaf: WorkspaceLeaf) => (this.view = new MyReactView(leaf)));
     this.app.workspace.onLayoutReady(this.onLayoutReady.bind(this));
+    this.addRibbonIcon("dice", "Activate view", () => {
+      this.activateView();
+    });
   }
 
   onLayoutReady(): void {
@@ -60,10 +63,27 @@ export default class WeatherPlugin extends Plugin {
 
   async saveSettings() {
     await this.saveData(this.settings);
-    this.reloadWeatherWidget();
   }
 
-  reloadWeatherWidget() {
-    this.app.workspace.getLeavesOfType("markdown").forEach((leaf) => {});
+  async activateView() {
+    const { workspace } = this.app;
+
+    let leaf: WorkspaceLeaf | null;
+    const leaves = workspace.getLeavesOfType(VIEW_TYPE);
+
+    if (leaves.length > 0) {
+      // A leaf with our view already exists, use that
+      leaf = leaves[0];
+    } else {
+      // Our view could not be found in the workspace, create a new leaf
+      // in the right sidebar for it
+      leaf = workspace.getRightLeaf(false);
+      await leaf?.setViewState({ type: VIEW_TYPE, active: true });
+    }
+
+    // "Reveal" the leaf in case it is in a collapsed sidebar
+    if (leaf) {
+      workspace.revealLeaf(leaf);
+    }
   }
 }
