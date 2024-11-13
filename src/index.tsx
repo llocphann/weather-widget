@@ -1,17 +1,20 @@
 import { ItemView, Plugin, WorkspaceLeaf, PluginSettingTab, Setting } from "obsidian";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { Root, createRoot } from "react-dom/client";
 
 // import { DayComponent } from "./component/day/";
 import DiceRoller from "./ui/DicerRoller.js";
 import { DEFAULT_SETTING, ISetting } from "./utils/const";
 import { getDataWeather } from "./API/weather.js";
+import { DayComponent } from "day/index.js";
 
 const VIEW_TYPE = "react-view";
 
 export class MyReactView extends ItemView {
   private reactComponent: React.ReactElement;
   settings: ISetting;
+  root: Root | null = null;
 
   getViewType(): string {
     return VIEW_TYPE;
@@ -25,11 +28,23 @@ export class MyReactView extends ItemView {
     return "calendar-with-checkmark";
   }
 
-  async onOpen(): Promise<void> {
-    // this.reactComponent = React.createElement(DayComponent);
-    this.reactComponent = React.createElement(DiceRoller);
+  // async onOpen(): Promise<void> {
+  //   // this.reactComponent = React.createElement(DayComponent);
+  //   this.reactComponent = React.createElement(DiceRoller);
 
-    ReactDOM.render(this.reactComponent, (this as any).contentEl);
+  //   ReactDOM.render(this.reactComponent, (this as any).contentEl);
+  // }
+  async onOpen() {
+    this.root = createRoot(this.containerEl.children[1]);
+    this.root.render(
+      <React.StrictMode>
+        <DayComponent />,
+      </React.StrictMode>
+    );
+  }
+
+  async onClose() {
+    this.root?.unmount();
   }
 }
 
