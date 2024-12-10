@@ -16,8 +16,8 @@ class WeatherView extends ItemView {
   async onOpen() {
     const container = this.containerEl.children[1];
     container.empty();
-    const apiKey = "a9e5efabf088c3375702924bf0903e63"; 
-    const city = "Can Tho, VN"; 
+    const apiKey = ""; 
+    const city = ""; 
     const units = "metric"; 
     const widgetContainer = container.createDiv({ cls: "weather-widget" });
     this.renderWeatherWidget(widgetContainer, apiKey, city, units);
@@ -33,17 +33,61 @@ class WeatherView extends ItemView {
       console.log("Weather data received:", data);
       const { main, weather, dt, timezone } = data;
       const temperature = Math.round(main.temp);
-      const description =weather[0].description.charAt(0).toUpperCase() + weather[0].description.slice(1);
       const localTime = new Date((dt + timezone) * 1000);
       const hours = localTime.getUTCHours();
       const isMorning = hours >= 6 && hours < 18;
-      const container = containerEl.createEl('div');
+      const description = weather[0].description;
+      console.log("Raw description:", description);
+      const formattedDescription = description.charAt(0).toUpperCase() + description.slice(1);
+      console.log("Formatted description:", formattedDescription);
+      const weatherConditions = weather.filter(condition => {
+        return (
+          (condition.id >= 700 && condition.id < 800) || // Mist
+          condition.id === 800 || // Clear sky
+          (condition.id >= 600 && condition.id < 700) || // Snow
+          (condition.id >= 200 && condition.id < 250) || // Thunderstorm
+          (condition.id >= 300 && condition.id < 400) || // Shower rain (excluding 520, 521)
+          condition.id === 520 || // Shower rain
+          condition.id === 521 || // Shower rain
+          condition.id === 802 || // Scattered clouds
+          (condition.id >= 803 && condition.id < 900) // Broken clouds
+        );
+      }).map(condition => {
+        if (condition.id >= 700 && condition.id < 800) {
+          return "Mist";
+        } 
+        else if (condition.id === 800) {
+          return "Clear sky";
+        } 
+        else if (condition.id >= 600 && condition.id < 700) {
+          return "Snow";
+        } 
+        else if (condition.id >= 200 && condition.id < 250) {
+          return "Thunderstorm";
+        } 
+        else if ((condition.id >= 300 && condition.id < 400) || condition.id === 520 || condition.id === 521) {
+          return "Shower rain";
+        } 
+        else if (condition.id === 802) {
+          return "Scattered clouds";
+        }
+        else if (condition.id >= 803 && condition.id < 900) {
+          return "Broken clouds";
+        } else {
+          return condition.description;
+        }
+      });
+      
+      console.log(weatherConditions);
+      
+      const container = el.createEl('div', { cls: 'weather-card' });
 
-      // Day section
       const day = container.createEl('div', { cls: 'day' });
       day.createEl('span', { cls: 'sun' });
       day.createEl('span', { cls: 'sunx' });
-      // Cloudy weather variations
+      day.createEl('h1');
+
+      
       const mbCloudy = container.createEl('div', { cls: 'mbcloudy' });
       mbCloudy.createEl('span', { cls: 'cloud' });
       mbCloudy.createEl('span', { cls: 'cloudx' });
@@ -54,14 +98,17 @@ class WeatherView extends ItemView {
       msCloudy.createEl('span', { cls: 'suncx' });
       msCloudy.createEl('span', { cls: 'scloud' });
       msCloudy.createEl('span', { cls: 'scloudx' });
+
       const mfCloudy = container.createEl('div', { cls: 'mfcloudy' });
       mfCloudy.createEl('span', { cls: 'sunc' });
       mfCloudy.createEl('span', { cls: 'suncx' });
       mfCloudy.createEl('span', { cls: 'scloud' });
+
       const ebCloudy = container.createEl('div', { cls: 'ebcloudy' });
       ebCloudy.createEl('span', { cls: 'cloud' });
       ebCloudy.createEl('span', { cls: 'cloudx' });
       ebCloudy.createEl('span', { cls: 'cloudz' });
+      
       // Night scene
       const night = container.createEl('div', { cls: 'night' });
       night.createEl('span', { cls: 'moon' });
@@ -103,226 +150,292 @@ class WeatherView extends ItemView {
       msnowy.createEl('span', { cls: 'stick' });
       msnowy.createEl('span', { cls: 'stick2' });
 
-      let weatherHTML = `
-    <div class="weather-info">
-      <p>${temperature}°C</p>
-      <p>${description}</p>`;
+      let weatherHTML = ''
+      if (description.includes("clear sky")) {
+        weatherHTML += isMorning
+          ? ` <div class="weather-card">
+                  <div class="day">
+                      <span class="sun"></span>
+                      <span class="sunx"></span>
+                  </div>
+              </div>`
+          : `<div class="weather-card">
+                <div class="night">
+                    <span class="moon"></span>
+                    <span class="spot1"></span>
+                    <span class="spot2"></span>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>    
+                    </ul>
+                </div>
+            </div>`;
+      } else if (description.includes("few clouds")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="mfcloudy">
+                    <span class="sunc"></span>
+                    <span class="suncx"></span>  
+                    <span class="scloud"></span>
+                </div>
+            </div>`
+          : `<div class="weather-card">
+                <div class="efcloudy">
+                    <span class="moon"></span>
+                    <span class="spot1"></span>
+                    <span class="spot2"></span>
+                    <span class="scloud"></span>
+                </div>
+            </div>`;
+      } else if (description.includes("scattered clouds")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="mscloudy">
+                    <span class="sunc"></span>
+                    <span class="suncx"></span>  
+                    <span class="scloud"></span>
+                    <span class="scloudx"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`
+          : `<div class="weather-card">
+                <div class="escloudy">
+                    <span class="moon"></span>
+                    <span class="spot1"></span>
+                    <span class="spot2"></span>  
+                    <span class="scloud"></span>
+                    <span class="scloudx"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`;
+      } else if (description.includes("broken clouds")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="mbcloudy">
+                    <span class="cloud"></span>
+                    <span class="cloudx"></span>
+                    <span class="cloudz"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`
+          : `<div class="weather-card">
+                <div class="ebcloudy">
+                    <span class="cloud"></span>
+                    <span class="cloudx"></span>
+                    <span class="cloudz"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`;
+      } else if (description.includes("rain")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="msrain">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>    
+                    </ul>
+                    <span class="cloudr"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`
+          : `<div class="weather-card">
+                <div class="esrain">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>    
+                    </ul>
+                    <span class="cloudrz"></span>
+                    <span class="moon"></span>
+                    <span class="spot1"></span>
+                    <span class="spot2"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`;
+      } else if (description.includes("rain")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="mrainy">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>  
+                    </ul>
+                    <span class="cloudr"></span>
+                    <span class="cloudrx"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`
+          : `<div class="weather-card">
+                <div class="erainy">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>  
+                    </ul>
+                    <span class="cloudr"></span>
+                    <span class="moon"></span>
+                    <span class="spot1"></span>
+                    <span class="spot2"></span>
+                    <span class="cloudrx"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`;
+      } else if (description.includes("thunderstorm")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="mrainz">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>      
+                    </ul>
+                    <span class="cloudrt"></span>
+                    <span class="cloudrtx"></span>
+                    <span class="cloudrty"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>                
+            </div>`
+          : `<div class="weather-card">
+                <div class="erainz">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>      
+                    </ul>
+                    <span class="cloudrt"></span>
+                    <span class="cloudrtx"></span>
+                    <span class="cloudrty"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                  <span class="moon"></span>
+                </div>
+            </div>`;
+      } else if (description.includes("snow")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="msnowy">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <span class="snowe"></span>
+                    <span class="snowex"></span>
+                    <span class="stick"></span>
+                    <span class="stick2"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`
+          : `<div class="weather-card">
+                <div class="esnowy">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <span class="snowe"></span>
+                    <span class="snowex"></span>
+                    <span class="stick"></span>
+                    <span class="stick2"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`;
+      } else if (description.includes("mist")) {
+        weatherHTML += isMorning
+          ? `<div class="weather-card">
+                <div class="mmist">
+                    <span class="mcloudtl"></span>
+                    <span class="mcloudtr"></span>
+                    <span class="mcloudbr"></span>
+                    <span class="sunc"></span>
+                    <span class="suncx"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                </div>
+            </div>`
+          : `<div class="weather-card">
+                <div class="emist">
+                    <span class="mcloudtl"></span>
+                    <span class="mcloudtr"></span>
+                    <span class="mcloudbr"></span>
+                    <span class="moon"></span>
+                    <span class="spot1"></span>
+                    <span class="spot2"></span>
+                    <h1>${temperature}°C</h1>
+                    <h2>${description}</h2>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>    
+                    </ul>
+                </div>
+            </div>`;
+      } else {
+        weatherHTML += isMorning
+          ? `<div class="morning-default">Good morning! The weather condition is unclear.</div>`
+          : `<div class="evening-default">Good evening! The weather condition is unclear.</div>`;
+      }
   
-  if (description.includes("Clear sky")) {
-    weatherHTML += isMorning
-      ? `<div class="day">
-          <span class="sun"></span>
-          <span class="sunx"></span>
-        </div>`
-      : `<div class="night">
-          <span class="moon"></span>
-          <span class="spot1"></span>
-          <span class="spot2"></span>
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>    
-          </ul>
-        </div>`;
-  } else if (description.includes("Few clouds")) {
-    weatherHTML += isMorning
-      ? `<div class="mfcloudy">
-          <span class="sunc"></span>
-          <span class="suncx"></span>  
-          <span class="scloud"></span>
-        </div>`
-      : `<div class="efcloudy">
-          <span class="moon"></span>
-          <span class="scloud"></span>
-        </div>`;
-  } else if (description.includes("Scattered clouds")) {
-    weatherHTML += isMorning
-      ? `<div class="mscloudy">
-          <span class="sunc"></span>
-          <span class="suncx"></span>  
-          <span class="scloud"></span>
-          <span class="scloudx"></span>
-        </div>`
-      : `<div class="escloudy">
-          <span class="moon"></span>  
-          <span class="scloud"></span>
-          <span class="scloudx"></span>
-        </div>`;
-  } else if (description.includes("Broken clouds")) {
-    weatherHTML += isMorning
-      ? `<div class="mbcloudy">
-            <span class="cloud"></span>
-            <span class="cloudx"></span>
-            <span class="cloudz"></span>
-        </div>`
-      : `<div class="ebcloudy">
-            <span class="cloud"></span>
-            <span class="cloudx"></span>
-            <span class="cloudz"></span>
-        </div>`;
-  } else if (description.includes("Shower rain")) {
-    weatherHTML += isMorning
-      ? `<div class="msrain">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>    
-          </ul>
-          <span class="cloudr"></span>
-        </div>`
-      : `<div class="esrain">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>    
-          </ul>
-          <span class="cloudrz"></span>
-          <span class="moon"></span>
-        </div>`;
-  } else if (description.includes("Rain")) {
-    weatherHTML += isMorning
-      ? `<div class="mrainy">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>  
-          </ul>
-          <span class="cloudr"></span>
-          <span class="cloudrx"></span>
-        </div>`
-      : `<div class="erainy">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>  
-          </ul>
-          <span class="cloudr"></span>
-          <span class="moon"></span>
-          <span class="cloudrx"></span>
-        </div>`;
-  } else if (description.includes("Thunderstorm")) {
-    weatherHTML += isMorning
-      ? `<div class="mrainz">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>      
-          </ul>
-          <span class="cloudrt"></span>
-          <span class="cloudrtx"></span>
-          <span class="cloudrty"></span>
-        </div>`
-      : `<div class="erainz">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>      
-          </ul>
-          <span class="cloudrt"></span>
-          <span class="cloudrtx"></span>
-          <span class="cloudrty"></span>
-          <span class="moon"></span>
-        </div>`;
-  } else if (description.includes("Snow")) {
-    weatherHTML += isMorning
-      ? `<div class="msnowy">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-          </ul>
-          <span class="snowe"></span>
-          <span class="snowex"></span>
-          <span class="stick"></span>
-          <span class="stick2"></span>
-        </div>`
-      : `<div class="esnowy">
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-          </ul>
-          <span class="snowe"></span>
-          <span class="snowex"></span>
-          <span class="stick"></span>
-          <span class="stick2"></span>
-        </div>`;
-  } else if (description.includes("Mist")) {
-    weatherHTML += isMorning
-      ? `<div class="mmist">
-          <span class="mcloudtl"></span>
-          <span class="mcloudtr"></span>
-          <span class="mcloudbr"></span>
-          <span class="sunc"></span>
-          <span class="suncx"></span>
-        </div>`
-      : `<div class="emist">
-          <span class="mcloudtl"></span>
-          <span class="mcloudtr"></span>
-          <span class="mcloudbr"></span>
-          <span class="moon"></span>
-          <span class="spot1"></span>
-          <span class="spot2"></span>
-          <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>    
-          </ul>
-        </div>`;
-  } else {
-    weatherHTML += isMorning
-      ? `<div class="morning-default">Good morning! The weather condition is unclear.</div>`
-      : `<div class="evening-default">Good evening! The weather condition is unclear.</div>`;
-  }
-  
-
-  weatherHTML += `</div>`;
   el.innerHTML = weatherHTML;
     } catch (error) {
       new Notice("Failed to load weather data.");

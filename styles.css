@@ -1,203 +1,321 @@
-/* General Styles */
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
 body {
-    background: #fff;
-}
-
-div {
-    width: 300px;
-    height: 300px;
-    border-radius: 35px;
-    z-index: 120;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fffff0;
 }
 
 h1 {
-    font-family: 'Raleway', sans-serif;
-    position: fixed;
-    left: 30%;
+    position: inherit;
+    left: 10%;
+    bottom: 11%;
+    color: #B5CAD3;
+    font-size: 12px;
 }
 
-/*############ MORNING = m ################ */
-/*############ EVENING = e ################ */
+h2 {
+    position: inherit;
+    left: 10%;
+    bottom: 1%;
+    color: #B5CAD3;
+    font-size: 12px;
+}
 
-/* Clear Sky - Sun */
-.day {
+.weather-card {
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 35px;
+    padding-top: 55px; 
+    height: 360px;
+    align-items: center;
+}
+
+.weather-card .day {
     position: absolute;
     background: linear-gradient(to top right, #FF5722 0%, #FB8C00 100%);
     box-shadow: 1px 1px 30px rgba(255, 111, 0, 1);
-    width: 300px;
-    height: 300px;
-    border-radius: 35px;
-    top: 10%;
+    height: 300px;20idth: 300px;20  border-radius: 30px;    
 }
 
-.night {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 25%;
-    border-radius: 35px;
-	background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
-	box-shadow: 1px 1px 30px rgba(81, 45, 168, 1);
-}
-
-/* Sun for clear sky */
-
-.sun {
+.day .sun {
     position: absolute;
-    top: -25%;
+    top: -55%;
     left: 65%;
-    width: 170px;
-    height: 170px;
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
     background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
     box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
     animation: inex 3s infinite linear;
 }
 
-.sunx {
+.day .sunx {
     position: absolute;
     top: 30%;
     left: 45%;
-    width: 10px;
-    height: 10px;
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
     background-color: #fff;
     opacity: 0.2;
 }
 
-/* Sun for cloudy variations */
+.weather-card .mbcloudy {
+    position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+    background: linear-gradient(to top right, #3F51B5 0%, #039BE5 40%);
+    box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
+}
 
-.sunc {
+.mbcloudy .cloud {
+    position: absolute;
+    top: 5%;
+    left: 70%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    box-shadow: 1px 1px 30px rgba(0, 151, 167, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.mbcloudy .cloudx {
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.mbcloudy .cloudz {
+    position: absolute;
+    top: 8%;
+    left: 35%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.weather-card .mscloudy {
+    position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+    background: linear-gradient(to top right, #039BE5 20%, #FB8C00 100%);
+    box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
+}
+
+.mscloudy .sunc {
     position: absolute;
     top: -20%;
     left: 65%;
-    width: 130px;
-    height: 130px;
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
     background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
     box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
 }
 
-.suncx {
+.mscloudy .suncx {
     position: absolute;
     top: -20%;
     left: 65%;
-    width: 130px;
-    height: 130px;
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
     background-color: #fff;
     opacity: 0.1;
 }
 
-/* Moon */
-.moon
-{
-	position: absolute;
-	top:-20%;
-	left:65%;
-	width:150px;
-	height: 150px;
-	border-radius: 100%;
-	background:rgba(255,241,118 ,1);
-	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
-}
-
-.spot1
-{
-	position: absolute;
-	top:-10%;
-	left:85%;
-	width:10px;
-	height: 10px;
-	border-radius: 100%;
-	background-color: #777;
-}
-.spot2
-{
-	position: absolute;
-	top:10%;
-	left:75%;
-	width:5px;
-	height: 5px;
-	border-radius: 100%;
-	background-color: #777;
-}
-
-/* Cloudy Variations 
-mbcloudy = morning broken clouds
-mscloudy = morning scattered clouds
-mfcloudy = morning few clouds
-*/
-
-.mbcloudy {
+.mscloudy .scloud {
     position: absolute;
-    width: 300px;
-    height: 300px;
     top: 10%;
-    border-radius: 35px;
-    left: 25%;
-    background: linear-gradient(to top right, #3F51B5 0%, #039BE5 40%);
-    box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
+    left: 78%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
+    box-shadow: 
+        -5px -5px 20px rgba(255, 223, 186, 0.8),
+        10px 10px 15px rgba(129, 212, 250, 0.5); 
+    animation: move 3s infinite linear;
+    z-index: 1;
 }
 
-.mscloudy {
+
+.mscloudy .scloudx {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 50%;
-    border-radius: 35px;
-    background: linear-gradient(to top right, #039BE5 20%, #FB8C00 100%);
-    box-shadow: 1px 1px 30px rgba(2, 119, 189, 1);
+    top: 20%;
+    left: 55%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
+    box-shadow: 
+        -5px -5px 20px rgba(255, 223, 186, 0.8),
+        10px 10px 15px rgba(129, 212, 250, 0.5); 
+    animation: move 3s infinite linear;
+    z-index: 1;
 }
 
-.mfcloudy {
+.weather-card .mfcloudy {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 75%;
-    border-radius: 35px;
     background: linear-gradient(to top right, #039BE5 5%, #FB8C00 85%);
     box-shadow: 
         -15px -15px 30px rgba(255, 255, 255, 0.8),
         10px -10px 25px rgba(255, 223, 186, 0.6),
         -5px 5px 20px rgba(135, 206, 250, 0.5),
         10px 10px 15px rgba(255, 140, 0, 0.4),   
-        inset 0px 0px 25px rgba(255, 255, 224, 0.4);
+        inset 0px 0px 25px rgba(255, 255, 224, 0.4);   
+    height: 200px; width: 200px; 
+    border-radius: 30px; 
 }
 
-.ebcloudy {
+.mfcloudy .sunc {
+    position: absolute;
+    top: -20%;
+    left: 65%;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
+    box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
+}
+
+.mfcloudy .suncx {
+    position: absolute;
+    top: -20%;
+    left: 65%;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background-color: #fff;
+    opacity: 0.1;
+}
+
+.mfcloudy .scloud {
+    position: absolute;
+    top: 10%;
+    left: 78%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
+    box-shadow: 
+        -5px -5px 20px rgba(255, 223, 186, 0.8),
+        10px 10px 15px rgba(129, 212, 250, 0.5); 
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+
+.weather-card .ebcloudy {
 	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 25%;
-    left: 40%;
-    border-radius: 35px;
+    height20300px; width20300px;
 	background: linear-gradient(to top right, #4682B4 5%, #2C3E50 85%);
 	box-shadow: 1px 1px 30px rgba(70, 130, 180, 0.8);
+    border-radius: 30px; 
 }
 
-.escloudy {
+.ebcloudy .cloud {
+    position: absolute;
+    top: 5%;
+    left: 70%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    box-shadow: 1px 1px 30px rgba(0, 151, 167, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.ebcloudy .cloudx {
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.ebcloudy .cloudz {
+    position: absolute;
+    top: 8%;
+    left: 35%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: rgba(129, 212, 250, 1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.weather-card .escloudy {
 	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 25%;
-    left: 25%;
-    border-radius: 35px;
+    height: 200px; width: 200px;
+    border-radius: 30px;
 	background: linear-gradient(to top right, #6A5ACD -60%, #2F4F4F 100%);
 	box-shadow: 1px 1px 30px rgba(70, 130, 180, 0.8);
 }
 
+.escloudy .moon {
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:75px;
+	height: 75px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
+
+.escloudy .scloud {
+    position: absolute;
+    top: 10%;
+    left: 78%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
+    box-shadow: 
+        -5px -5px 20px rgba(255, 223, 186, 0.8),
+        10px 10px 15px rgba(129, 212, 250, 0.5); 
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.escloudy .scloudx {
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
+    box-shadow: 
+        -5px -5px 20px rgba(255, 223, 186, 0.8),
+        10px 10px 15px rgba(129, 212, 250, 0.5); 
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
 .efcloudy {
 	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 25%;
-    border-radius: 35px;
+	top: 25%;
+	left: 75%;
 	background: linear-gradient(to top right, #6A5ACD 20%, #2F4F4F 100%);;
 	box-shadow: 
 		-15px -15px 30px rgba(255, 255, 255, 0.4),
@@ -207,49 +325,51 @@ mfcloudy = morning few clouds
 		inset 0px 0px 25px rgba(135, 206, 235, 0.4);
 }
 
-/* Mist 
-mmist = morning mist
-emist = evening mist
-*/
+.efcloudy .moon {
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:75px;
+	height: 75px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
 
-.mmist {
+.efcloudy .scloud {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 55%;
-    border-radius: 35px;
+    top: 10%;
+    left: 78%;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
+    box-shadow: 
+        -5px -5px 20px rgba(255, 223, 186, 0.8),
+        10px 10px 15px rgba(129, 212, 250, 0.5); 
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.weather-card .mmist {
+    position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
     background: linear-gradient(to top right, #B3D9FF 20%, #A4C9E4 100%);
     box-shadow: 1px 1px 30px rgba(176, 196, 222, 0.8), 0px 0px 50px rgba(162, 201, 228, 0.6);
 }
 
-.emist {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 55%;
-    left: 25%;
-    border-radius: 35px;
-    background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
-    box-shadow: 1px 1px 30px rgba(63, 81, 181, 0.8), 0px 0px 50px rgba(171, 71, 188, 0.6);
-}
-
-/* Mist Clouds 
-mcloudtl = misty cloud top left
-mcloudbl = misty cloud bot left
-mcloudtr = misty cloud top right
-mcloudbr = misty cloud bot right */
-
-.mcloudtl, .mcloudbl, .mcloudtr, .mcloudbr {
+.mmist .mcloudtl, .mmist .mcloudbl, .mmist .mcloudtr, .mmist .mcloudbr {
     position: absolute;
     border-radius: 15px;
     background-color: rgba(204, 233, 255, 0.7);
     animation: move 3s infinite linear;
 }
 
-.mcloudtl {
+.mmist .mcloudtl {
     top: -2%;
     left: 55%;
-    width: 90px;
+    width: 60px;
     height: 25px;
     box-shadow: 
     4px 4px 60px rgba(169, 169, 169, 0.9),
@@ -258,34 +378,22 @@ mcloudbr = misty cloud bot right */
     z-index: 1;
 }
 
-.mcloudbl {
-    top: -22%;
-    left: 25%;
-    width: 90px;
-    height: 25px;
-    box-shadow: 
-    4px 4px 60px rgba(169, 169, 169, 0.9),
-    -4px -4px 80px rgba(255, 255, 255, 0.7),
-    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
-    z-index: 1;
-}
-
-.mcloudtr {
+.mmist .mcloudtr {
     top: 5%;
     left: 85%;
-    width: 130px;
-    height: 25px;
+    width: 60px;
+    height: 12px;
     box-shadow: 
     4px 4px 60px rgba(169, 169, 169, 0.9),
     -4px -4px 80px rgba(255, 255, 255, 0.7),
     inset 0px 0px 40px rgba(200, 200, 200, 0.8);
 }
 
-.mcloudbr {
+.mmist .mcloudbr {
     top: 20%;
     left: 75%;
-    width: 120px;
-    height: 23px;
+    width: 60px;
+    height: 12px;
     box-shadow: 
     4px 4px 60px rgba(169, 169, 169, 0.9),
     -4px -4px 80px rgba(255, 255, 255, 0.7),
@@ -293,193 +401,399 @@ mcloudbr = misty cloud bot right */
     z-index: 1;
 }
 
-/* Cloud Elements */
+.mmist .sunc {
+    position: absolute;
+    top: -20%;
+    left: 65%;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background: linear-gradient(to bottom left, #FFEB3B 0%, #F9A825 90%);
+    box-shadow: 1px 1px 30px rgba(255, 160, 0, 1);
+}
 
-.cloud {
+.mmist .suncx {
+    position: absolute;
+    top: -20%;
+    left: 65%;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background-color: #fff;
+    opacity: 0.1;
+}
+
+.weather-card .emist {
+    position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+    background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
+    box-shadow: 1px 1px 30px rgba(63, 81, 181, 0.8), 0px 0px 50px rgba(171, 71, 188, 0.6);
+}
+
+
+.emist .mcloudtl {
+    top: -2%;
+    left: 55%;
+    width: 60px;
+    height: 12px;
+    box-shadow: 
+    4px 4px 60px rgba(169, 169, 169, 0.9),
+    -4px -4px 80px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
+    z-index: 1;
+}
+
+.emist .mcloudtr {
+    top: 5%;
+    left: 85%;
+    width: 60px;
+    height: 12px;
+    box-shadow: 
+    4px 4px 60px rgba(169, 169, 169, 0.9),
+    -4px -4px 80px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
+}
+
+.emist .mcloudbr {
+    top: 20%;
+    left: 75%;
+    width: 60px;
+    height: 12px;
+    box-shadow: 
+    4px 4px 60px rgba(169, 169, 169, 0.9),
+    -4px -4px 80px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 40px rgba(200, 200, 200, 0.8);
+    z-index: 1;
+}
+
+.emist .moon {
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:75px;
+	height: 75px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
+
+.emist .spot1 {
+	position: absolute;
+	top:-10%;
+	left:85%;
+	width:10px;
+	height: 10px;
+	border-radius: 100%;
+	background-color: #777;
+}
+
+.emist .spot2 {
+	position: absolute;
+	top:10%;
+	left:75%;
+	width:5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color: #777;
+}
+
+.emist ul { 
+
+}
+
+.emist ul li { 
+	position: absolute;
+	list-style: none;
+	width: 3px;
+	height: 3px;
+	border-radius: 100%;
+	background-color: #fff;
+	transform: rotate(45deg);
+}
+
+.weather-card .msnowy {
+    position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+    background: linear-gradient( to top right,rgba(33,33,33 ,0.9) 30%, rgba(117,117,117 ,1) 95%);
+    box-shadow: 1px 1px 30px rgba(117,117,117 ,1);
+}
+
+.msnowy ul { 
+
+}
+
+.msnowy ul li { 
+	position: absolute;
+	list-style: none;
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color:#777;
+	box-shadow: 1px 1px 30px #555;
+	animation: fall 3s infinite linear ;
+    opacity:0;
+}
+
+.msnowy .snowe {
+  position: absolute;
+	bottom:-5%;
+	right:-5%;
+	width:80px;
+	height: 80px;
+	border-radius:60px;
+	background-color: #ddd;
+}
+
+.msnowy .snowex {
+	position: absolute;
+	bottom: 14%;
+	right: 15%;
+	width:50px;
+	height: 50px;	
+	border-radius:100%;
+	background-color: #bbb;
+    z-index: 400;
+}
+
+.msnowy .stick {
+	position: absolute;
+	bottom: 20%;
+	right: 6%;
+	width:7px;
+	height: 35px;	
+	transform: rotate(0deg);
+	background-color: #333;
+    z-index: -10;
+}
+
+.msnowy .stick2 {
+	position: absolute;
+	bottom: 2%;
+	right: 25%;
+	width: 7px;
+	height: 35px;	
+	transform: rotate(105deg);
+	background-color: #333;
+    z-index: -10;
+}
+
+.weather-card .esnowy {
+	position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+	background:linear-gradient( to top right,rgba(117,117,117 ,1) 0%,
+	rgba(33,33,33 ,1) 90%);
+	box-shadow: 1px 1px 30px rgba(33,33,33 ,1);
+}
+
+.esnowy ul { 
+
+}
+
+.esnowy ul li { 
+	position: absolute;
+	list-style: none;
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color:#777;
+	box-shadow: 1px 1px 30px #555;
+	animation: fall 3s infinite linear ;
+    opacity:0;
+}
+
+.esnowy .snowe {
+  position: absolute;
+	bottom:-5%;
+	right:-5%;
+	width:80px;
+	height: 80px;
+	border-radius:60px;
+	background-color: #ddd;
+}
+
+.esnowy .snowex {
+	position: absolute;
+	bottom: 14%;
+	right: 15%;
+	width:50px;
+	height: 50px;	
+	border-radius:100%;
+	background-color: #bbb;
+    z-index: 400;
+}
+
+.esnowy .stick {
+	position: absolute;
+	bottom: 20%;
+	right: 6%;
+	width:7px;
+	height: 35px;	
+	transform: rotate(0deg);
+	background-color: #333;
+    z-index: -10;
+}
+
+.esnowy .stick2 {
+	position: absolute;
+	bottom: 2%;
+	right: 25%;
+	width: 7px;
+	height: 35px;	
+	transform: rotate(105deg);
+	background-color: #333;
+    z-index: -10;
+}
+
+.weather-card .msrain { 
+	position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
+	rgba(38,198,218 ,1) 50%);
+	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
+}
+
+.msrain ul { 
+
+}
+
+.msrain ul li { 
+    position: absolute;
+    list-style: none;
+    width: 2px;
+    height: 7px;
+    border-radius: 10%;
+    background-color: #eee;
+    opacity: 0;
+    animation: fall 3s infinite linear;
+    transform: rotate(25deg);
+}
+
+.msrain .cloudr {
     position: absolute;
     top: 5%;
-    left: 70%;
-    width: 130px;
-    height: 25px;
-    border-radius: 15px;
-    background-color: rgba(129, 212, 250, 1);
-    box-shadow: 1px 1px 30px rgba(0, 151, 167, 1);
+    left: 76%;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: move 3s infinite linear;
     z-index: 1;
 }
 
-.cloudx {
+.weather-card .mrainy { 
+	position: absolute;
+	top:60%;
+	left:30%;  
+    height: 200px; width: 200px;
+	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
+	rgba(38,198,218 ,1) 50%);
+	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
+}
+
+.mrainy ul { 
+
+}
+
+.mrainy ul li { 
     position: absolute;
-    top: 20%;
-    left: 55%;
-    width: 120px;
-    height: 23px;
-    border-radius: 15px;
-    background-color: rgba(129, 212, 250, 1);
+    list-style: none;
+    width: 2px;
+    height: 7px;
+    border-radius: 10%;
+    background-color: #eee;
+    opacity: 0;
+    animation: fall 3s infinite linear;
+    transform: rotate(25deg);
+}
+
+.mrainy .cloudr {
+    position: absolute;
+    top: 5%;
+    left: 76%;
+    width: 100px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: move 3s infinite linear;
     z-index: 1;
 }
 
-.cloudz {
+.mrainy .cloudrx {
     position: absolute;
-    top: 8%;
+    top: 18%;
+    left: 60%;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.weather-card .mrainz { 
+	position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
+	rgba(38,198,218 ,1) 50%);
+	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
+}
+
+.mrainz ul { 
+
+}
+
+.mrainz ul li { 
+    position: absolute;
+    list-style: none;
+    width: 2px;
+    height: 7px;
+    border-radius: 10%;
+    background-color: #eee;
+    opacity: 0;
+    animation: fall 3s infinite linear;
+    transform: rotate(25deg);
+}
+
+.mrainz .cloudrt {
+    position: absolute;
+    top: 5%;
+    left: 76%;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: flash 1.5s infinite linear, move 3s infinite linear;
+    z-index: 1;
+}
+
+.mrainz .cloudrtx {
+    position: absolute;
+    top: 18%;
+    left: 60%;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: flash 1.5s infinite linear, move 3s infinite linear;
+      z-index: 1;
+}
+
+.mrainz .cloudrty {
+    position: absolute;
+    top: 10%;
     left: 35%;
-    width: 80px;
-    height: 20px;
-    border-radius: 15px;
-    background-color: rgba(129, 212, 250, 1);
-    animation: move 3s infinite linear;
-    z-index: 1;
-}
-
-/* Sun with Cloud 
-scloud = suncloud
-scloudx = suncloud 2
-*/
-
-.scloud {
-    position: absolute;
-    top: 10%;
-    left: 78%;
-    width: 120px;
-    height: 23px;
-    border-radius: 15px;
-    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
-    box-shadow: 
-        -5px -5px 20px rgba(255, 223, 186, 0.8),
-        10px 10px 15px rgba(129, 212, 250, 0.5); 
-    animation: move 3s infinite linear;
-    z-index: 1;
-}
-
-.scloudx {
-    position: absolute;
-    top: 20%;
-    left: 55%;
-    width: 120px;
-    height: 23px;
-    border-radius: 15px;
-    background: linear-gradient(to bottom left, rgba(255, 223, 186, 1) 0%, rgba(129, 212, 250, 1) 100%);
-    box-shadow: 
-        -5px -5px 20px rgba(255, 223, 186, 0.8),
-        10px 10px 15px rgba(129, 212, 250, 0.5); 
-    animation: move 3s infinite linear;
-    z-index: 1;
-}
-
-/* Rainy Variations
-msrain = morning shower rain
-mrainy = morning rainy
-mrainz = morning thunderstorm 
-cloudr = cloudrain
-cloudrx = cloudrain 2
-cloudrt = cloudrain thunderstorm
-cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
-
-.msrain {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: ;
-    border-radius: 35px;
-	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
-	rgba(38,198,218 ,1) 50%);
-	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
-}
-
-.mrainy {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 25%;
-    border-radius: 35px;
-	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
-	rgba(38,198,218 ,1) 50%);
-	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
-}
-
-.mrainz {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 50%;
-    border-radius: 35px;
-	background:linear-gradient( to top right,rgba(156,204,101 ,1) 0%,
-	rgba(38,198,218 ,1) 50%);
-	box-shadow: 1px 1px 30px rgba(38,198,218 ,1);
-}
-
-/* .esrain Element */
-.esrain {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 55%;
-    left: %;
-    border-radius: 35px;
-	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
-	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
-}
-
-/* .erainy Element */
-.erainy {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 55%;
-    left: 25%;
-    border-radius: 35px;
-	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
-	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
-}
-
-/* .erainz Element */
-.erainz {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 55%;
-    left: 50%;
-    border-radius: 35px;
-	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
-	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
-}
-
-.cloudr {
-    position: absolute;
-    top: 5%;
-    left: 76%;
-    width: 100px;
-    height: 25px;
-    border-radius: 20px;
-	background-color: rgba(96,125,139 ,1);
-	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
-    animation: move 3s infinite linear;
-      z-index: 1;
-}
-
-.cloudrx {
-    position: absolute;
-    top: 18%;
-    left: 60%;
-    width: 100px;
-    height: 25px;
-    border-radius: 20px;
-	background-color: rgba(96,125,139 ,1);
-	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
-    animation: move 3s infinite linear;
-      z-index: 1;
-}
-
-.cloudrt {
-    position: absolute;
-    top: 5%;
-    left: 76%;
-    width: 100px;
-    height: 25px;
+    width: 60px;
+    height: 12px;
     border-radius: 20px;
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
@@ -487,20 +801,219 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
       z-index: 1;
 }
 
-.cloudrtx {
+.weather-card .night {
+	position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+	background: linear-gradient(to bottom right, rgba(63, 81, 181, 1) 0%, rgba(171, 71, 188, 1) 70%);
+	box-shadow: 1px 1px 30px rgba(81, 45, 168, 1);
+}
+
+.night .moon {
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:75px;
+	height: 75px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
+
+.night .spot1 {
+	position: absolute;
+	top:-10%;
+	left:85%;
+	width:10px;
+	height: 10px;
+	border-radius: 100%;
+	background-color: #777;
+}
+
+.night .spot2 {
+	position: absolute;
+	top:10%;
+	left:75%;
+	width:5px;
+	height: 5px;
+	border-radius: 100%;
+	background-color: #777;
+}
+
+.night ul { 
+
+}
+
+.night ul li { 
+	position: absolute;
+	list-style: none;
+	width: 3px;
+	height: 3px;
+	border-radius: 100%;
+	background-color: #fff;
+	transform: rotate(45deg);
+}
+
+.weather-card .esrain {
+	position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
+	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
+}
+
+.esrain ul { 
+
+}
+
+.esrain ul li { 
+    position: absolute;
+    list-style: none;
+    width: 2px;
+    height: 7px;
+    border-radius: 10%;
+    background-color: #eee;
+    opacity: 0;
+    animation: fall 3s infinite linear;
+    transform: rotate(25deg);
+}
+
+.esrain .cloudrz {
+    position: absolute;
+    top: 15%;
+    left: 65%;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.esrain .moon {
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:75px;
+	height: 75px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
+
+.weather-card .erainy {
+	position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
+	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
+}
+
+.erainy ul { 
+
+}
+
+.erainy ul li { 
+    position: absolute;
+    list-style: none;
+    width: 2px;
+    height: 7px;
+    border-radius: 10%;
+    background-color: #eee;
+    opacity: 0;
+    animation: fall 3s infinite linear;
+    transform: rotate(25deg);
+}
+
+.erainy .cloudr {
+    position: absolute;
+    top: 5%;
+    left: 76%;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.erainy .moon {
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:75px;
+	height: 75px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
+}
+
+.erainy .cloudrx {
     position: absolute;
     top: 18%;
     left: 60%;
-    width: 100px;
-    height: 25px;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: move 3s infinite linear;
+    z-index: 1;
+}
+
+.weather-card .erainz {
+	position: absolute;
+    border-radius: 30px; 
+    height: 200px; width: 200px;
+	background: linear-gradient(to top right, rgba(105, 89, 205, 1) 0%, rgba(38, 38, 114, 1) 50%);
+	box-shadow: 1px 1px 30px rgba(38, 38, 114, 1);
+}
+
+.erainz ul { 
+
+}
+
+.erainz ul li { 
+    position: absolute;
+    list-style: none;
+    width: 2px;
+    height: 7px;
+    border-radius: 10%;
+    background-color: #eee;
+    opacity: 0;
+    animation: fall 3s infinite linear;
+    transform: rotate(25deg);
+}
+
+.erainz .cloudrt {
+    position: absolute;
+    top: 5%;
+    left: 76%;
+    width: 60px;
+    height: 12px;
     border-radius: 20px;
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: flash 1.5s infinite linear, move 3s infinite linear;
-      z-index: 1;
+    z-index: 1;
 }
 
-.cloudrty {
+.erainz .cloudrtx {
+    position: absolute;
+    top: 18%;
+    left: 60%;
+    width: 60px;
+    height: 12px;
+    border-radius: 20px;
+	background-color: rgba(96,125,139 ,1);
+	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
+    animation: flash 1.5s infinite linear, move 3s infinite linear;
+    z-index: 1;
+}
+
+.erainz .cloudrty {
     position: absolute;
     top: 10%;
     left: 35%;
@@ -510,20 +1023,18 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
 	background-color: rgba(96,125,139 ,1);
 	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
     animation: flash 1.5s infinite linear, move 3s infinite linear;
-      z-index: 1;
+    z-index: 1;
 }
 
-.cloudrz {
-    position: absolute;
-    top: 15%;
-    left: 65%;
-    width: 100px;
-    height: 25px;
-    border-radius: 20px;
-	background-color: rgba(96,125,139 ,1);
-	box-shadow: 1px 1px 30px rgba(84,110,122 ,1);
-    animation: move 3s infinite linear;
-    z-index: 1;
+.erainz .moon {
+	position: absolute;
+	top:-20%;
+	left:65%;
+	width:75px;
+	height: 75px;
+	border-radius: 100%;
+	background:rgba(255,241,118 ,1);
+	box-shadow: 1px 1px 30px rgba(224,224,224 ,1);
 }
 
 
@@ -539,86 +1050,60 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
     transform: rotate(25deg);
 }
 
-.erainz li:nth-child(1), .erainy li:nth-child(1), .esrain li:nth-child(1), .msrain li:nth-child(1), .mrainy li:nth-child(1), .mrainz li:nth-child(1) {
+.erainz ul li:nth-child(1), .erainy ul li:nth-child(1), .esrain ul li:nth-child(1), .msrain ul li:nth-child(1), .mrainy ul li:nth-child(1), .mrainz ul li:nth-child(1) {
     top: 20%;
     left: 95%;
 }
 
-.erainz li:nth-child(2), .erainy li:nth-child(2), .esrain li:nth-child(2), .msrain li:nth-child(2), .mrainy li:nth-child(2), .mrainz li:nth-child(2) {
+.erainz ul li:nth-child(2), .erainy ul li:nth-child(2), .esrain ul li:nth-child(2), .msrain ul li:nth-child(2), .mrainy ul li:nth-child(2), .mrainz ul li:nth-child(2) {
     top: 15%;
     left: 83%;
     animation-delay: 0.3s;
 }
 
-.erainz li:nth-child(3), .erainy li:nth-child(3), .esrain li:nth-child(3), .msrain li:nth-child(3), .mrainy li:nth-child(3), .mrainz li:nth-child(3) {
+.erainz ul li:nth-child(3), .erainy ul li:nth-child(3), .esrain ul li:nth-child(3), .msrain ul li:nth-child(3), .mrainy ul li:nth-child(3), .mrainz ul li:nth-child(3) {
     top: 14%;
     left: 87%;
     animation-delay: 0.6s;
 }
 
-.erainz li:nth-child(4), .erainy li:nth-child(4), .esrain li:nth-child(4), .msrain li:nth-child(4), .mrainy li:nth-child(4), .mrainz li:nth-child(4) {
+.erainz ul li:nth-child(4), .erainy ul li:nth-child(4), .esrain ul li:nth-child(4), .msrain ul li:nth-child(4), .mrainy ul li:nth-child(4), .mrainz ul li:nth-child(4) {
     top: 25%;
     left: 70%;
     animation-delay: 1s;
 }
 
-.erainz li:nth-child(5), .erainy li:nth-child(5), .esrain li:nth-child(5), .msrain li:nth-child(5), .mrainy li:nth-child(5), .mrainz li:nth-child(5) {
+.erainz ul li:nth-child(5), .erainy ul li:nth-child(5), .esrain ul li:nth-child(5), .msrain ul li:nth-child(5), .mrainy ul li:nth-child(5), .mrainz ul li:nth-child(5) {
     top: 20%;
     left: 75%;
 }
 
-.erainz li:nth-child(6), .erainy li:nth-child(6), .esrain li:nth-child(6), .msrain li:nth-child(6), .mrainy li:nth-child(6), .mrainz li:nth-child(6) {
+.erainz ul li:nth-child(6), .erainy ul li:nth-child(6), .esrain ul li:nth-child(6), .msrain ul li:nth-child(6), .mrainy ul li:nth-child(6), .mrainz ul li:nth-child(6) {
     top: 20%;
     left: 75%;
 }
 
-.erainz li:nth-child(7), .erainy li:nth-child(7), .esrain li:nth-child(7), .msrain li:nth-child(7), .mrainy li:nth-child(7), .mrainz li:nth-child(7) {
+.erainz ul li:nth-child(7), .erainy ul li:nth-child(7), .esrain ul li:nth-child(7), .msrain ul li:nth-child(7), .mrainy ul li:nth-child(7), .mrainz ul li:nth-child(7) {
     top: 15%;
     left: 63%;
     animation-delay: 0.3s;
 }
 
-.erainz li:nth-child(8), .erainy li:nth-child(8), .esrain li:nth-child(8), .msrain li:nth-child(8), .mrainy li:nth-child(8), .mrainz li:nth-child(8) {
+.erainz ul li:nth-child(8), .erainy ul li:nth-child(8), .esrain ul li:nth-child(8), .msrain ul li:nth-child(8), .mrainy ul li:nth-child(8), .mrainz ul li:nth-child(8) {
     top: 14%;
     left: 67%;
     animation-delay: 0.6s;
 }
 
-.erainz li:nth-child(9), .erainy li:nth-child(9), .esrain li:nth-child(9), .msrain li:nth-child(9), .mrainy li:nth-child(9), .mrainz li:nth-child(9) {
+.erainz ul li:nth-child(9), .erainy ul li:nth-child(9), .esrain ul li:nth-child(9), .msrain ul li:nth-child(9), .mrainy ul li:nth-child(9), .mrainz ul li:nth-child(9) {
     top: 25%;
     left: 50%;
     animation-delay: 1s;
 }
 
-.erainz li:nth-child(10), .erainy li:nth-child(10), .esrain li:nth-child(10), .msrain li:nth-child(10), .mrainy li:nth-child(10), .mrainz li:nth-child(10) {
+.erainz ul li:nth-child(10), .erainy ul li:nth-child(10), .esrain ul li:nth-child(10), .msrain ul li:nth-child(10), .mrainy ul li:nth-child(10), .mrainz ul li:nth-child(10) {
     top: 20%;
     left: 55%;
-}
-
-/* Snowy */
-
-.msnowy {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 55%;
-    left: 75%;
-    border-radius: 35px;
-    background: linear-gradient( to top right,rgba(33,33,33 ,0.9) 30%, rgba(117,117,117 ,1) 95%);
-    box-shadow: 1px 1px 30px rgba(117,117,117 ,1);
-}
-
-
-.esnowy {
-	position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 55%;
-    left: 50%;
-    border-radius: 35px;
-	background:linear-gradient( to top right,rgba(117,117,117 ,1) 0%,
-	rgba(33,33,33 ,1) 90%);
-	box-shadow: 1px 1px 30px rgba(33,33,33 ,1);
 }
 
 .esnowy li, .msnowy li {
@@ -633,38 +1118,38 @@ cloudrtx (cloudrty) = cloudrain thunderstorm 1 (cloudrain thunderstorm 2) */
     opacity:0;
 }
 
-.esnowy li:nth-child(1), .msnowy li:nth-child(1) {
+.esnowy ul li:nth-child(1), .msnowy ul li:nth-child(1) {
 top:0%;
 left:100%;
 }
 
-.esnowy li:nth-child(2), .msnowy li:nth-child(2) {
+.esnowy ul li:nth-child(2), .msnowy ul li:nth-child(2) {
     top:5%;
     left:90%;
 }
 
-.esnowy li:nth-child(3), .msnowy li:nth-child(3)
+.esnowy ul li:nth-child(3), .msnowy ul li:nth-child(3)
 {
     top:-10%;
     left:80%;
     animation-delay: 2s;
 }
 
-.esnowy li:nth-child(4), .msnowy li:nth-child(4)
+.esnowy ul li:nth-child(4), .msnowy ul li:nth-child(4)
 {
     top:10%;
     left:100%;
     animation-delay: 2s;
 }
 
-.esnowy li:nth-child(5), .msnowy li:nth-child(5)
+.esnowy ul li:nth-child(5), .msnowy ul li:nth-child(5)
 {
     top:20%;
     left:80%;
     animation-delay: 0.5s;
 }
 
-.esnowy li:nth-child(6), .msnowy li:nth-child(6)
+.esnowy ul li:nth-child(6), .msnowy ul li:nth-child(6)
 {
     top:35%;
     left:70%;
@@ -673,7 +1158,7 @@ left:100%;
 }
 
 
-.esnowy li:nth-child(7), .msnowy li:nth-child(7)
+.esnowy ul li:nth-child(7), .msnowy ul li:nth-child(7)
 {
     top:23%;
     left:60%;
@@ -681,7 +1166,7 @@ left:100%;
     animation-delay: 0.8s;
 }
 
-.esnowy li:nth-child(8), .msnowy li:nth-child(8)
+.esnowy ul li:nth-child(8), .msnowy ul li:nth-child(8)
 {
     top:5%;
     left:70%;
@@ -689,77 +1174,17 @@ left:100%;
     animation-delay: 0.8s;
 }
 
-.snowe
-{
-  position: absolute;
-	bottom:-5%;
-	right:-5%;
-	width:80px;
-	height: 80px;
-	border-radius:60px;
-	background-color: #ddd;
-}
-
-.snowex
-{
-	position: absolute;
-	bottom: 14%;
-	right: 15%;
-	width:50px;
-	height: 50px;	
-	border-radius:100%;
-	background-color: #bbb;
-  z-index: 400;
-
-}
-
-.stick
-{
-	position: absolute;
-	bottom: 20%;
-	right: 6%;
-	width:7px;
-	height: 35px;	
-	transform: rotate(0deg);
-	background-color: #333;
-  z-index: -10;
-}
-
-.stick2
-{
-	position: absolute;
-	bottom: 2%;
-	right: 25%;
-	width: 7px;
-	height: 35px;	
-	transform: rotate(105deg);
-	background-color: #333;
-  z-index: -10;
-}
-
-/*############ EVENING ################ */
-
-.emist li, .night li {
-	position: absolute;
-	list-style: none;
-	width: 3px;
-	height: 3px;
-	border-radius: 100%;
-	background-color: #fff;
-	transform: rotate(45deg);
-}
-
-.emist li:nth-child(1), .night li:nth-child(1) {
+.emist ul li:nth-child(1), .night ul li:nth-child(1) {
 	top: 30%;
 	left: 65%;
 }
 
-.emist li:nth-child(2), .night li:nth-child(2) {
+.emist ul li:nth-child(2), .night ul li:nth-child(2) {
 	top: 35%;
 	left: 53%;
 }
 
-.emist li:nth-child(3), .night li:nth-child(3) {
+.emist ul li:nth-child(3), .night ul li:nth-child(3) {
 	opacity: 0;
 	top: 20%;
 	left: 75%;
@@ -769,12 +1194,12 @@ left:100%;
 	animation-delay: 0.6s;
 }
 
-.emist li:nth-child(4), .night li:nth-child(4) {
+.emist ul li:nth-child(4), .night ul li:nth-child(4) {
 	top: 5%;
 	left: 50%;
 }
 
-.emist li:nth-child(5), .night li:nth-child(5) {
+.emist ul li:nth-child(5), .night ul li:nth-child(5) {
 	opacity: 0;
 	top: 20%;
 	left: 55%;
